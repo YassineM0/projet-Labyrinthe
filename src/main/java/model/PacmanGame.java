@@ -1,9 +1,5 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 import engine.Cmd;
 import engine.Game;
 
@@ -15,23 +11,41 @@ import engine.Game;
  * 
  */
 public class PacmanGame implements Game {
+	private int[][] labyrinthe;
+	
+
+	private void genererLabyrinthe()
+	{
+		int width = 14;
+		int height = 14;
+		this.labyrinthe = new int[height][width];
+
+		for(int i = 0;i < height;i++)
+		{
+			for(int j = 0;j < width;j++)
+			{
+				if(i == 0 || i == height - 1 || j == 0 || j == width - 1)
+				{
+					labyrinthe[i][j] = 0;
+				} else
+				{
+					labyrinthe[i][j] = 1;
+				}
+			}
+		}
+	}
+
+	public int[][] getLabyrinthe()
+	{
+		return labyrinthe;
+	}
 
 	/**
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
 	public PacmanGame(String source) {
-		BufferedReader helpReader;
-		try {
-			helpReader = new BufferedReader(new FileReader(source));
-			String ligne;
-			while ((ligne = helpReader.readLine()) != null) {
-				System.out.println(ligne);
-			}
-			helpReader.close();
-		} catch (IOException e) {
-			System.out.println("Help not available");
-		}
+		genererLabyrinthe();
 	}
 
 	/**

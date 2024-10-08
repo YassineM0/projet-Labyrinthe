@@ -13,12 +13,12 @@ import engine.GamePainter;
  * 
  */
 public class PacmanPainter implements GamePainter {
-
+	private PacmanGame game;
 	/**
 	 * la taille des cases
 	 */
-	protected static final int WIDTH = 100;
-	protected static final int HEIGHT = 100;
+	protected static final int WIDTH = 700;
+	protected static final int HEIGHT = 700;
 
 	/**
 	 * appelle constructeur parent
@@ -26,7 +26,8 @@ public class PacmanPainter implements GamePainter {
 	 * @param game
 	 *            le jeutest a afficher
 	 */
-	public PacmanPainter() {
+	public PacmanPainter(PacmanGame game) {
+		this.game = game;
 	}
 
 	/**
@@ -35,8 +36,21 @@ public class PacmanPainter implements GamePainter {
 	@Override
 	public void draw(BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		crayon.setColor(Color.blue);
-		crayon.fillOval(0,0,10,10);
+		int[][] labyrinthe = game.getLabyrinthe();
+		for(int i = 0;i < labyrinthe.length;i++)
+		{
+			for(int j = 0;j < labyrinthe[i].length;j++)
+			{
+				if(labyrinthe[i][j] == 0){
+				crayon.setColor(Color.GRAY);
+				crayon.fillRect(i * 50, j * 50, 50, 50);
+				} else 
+				{
+					crayon.setColor(Color.WHITE);
+					crayon.fillRect(i * 50, j * 50, 50, 50);
+				}
+			} 
+		}
 	}
 
 	@Override
