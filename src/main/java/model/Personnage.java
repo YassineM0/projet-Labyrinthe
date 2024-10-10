@@ -23,16 +23,16 @@ public class Personnage extends Position {
 	
 		switch (cmd) {
 			case UP:
-				newY -= 1; // Move up decreases Y
+				newY += 1; 
 				break;
 			case DOWN:
-				newY += 1; // Move down increases Y
+				newY -= 1; 
 				break;
 			case LEFT:
-				newX -= 1; // Move left decreases X
+				newX -= 1; 
 				break;
 			case RIGHT:
-				newX += 1; // Move right increases X
+				newX += 1; 
 				break;
 			case IDLE:
 				System.out.println("Hero is idle.");
@@ -42,9 +42,9 @@ public class Personnage extends Position {
 		// Check if the move is possible
 		if (mouvPossible(labyrinthe, newX, newY)) {
 			setCoord(newX, newY);
-			System.out.println("Hero moved to: (" + newX + ", " + newY + ")");
+			System.out.println("Hero moved to: (" + newX + ", " + newY + ")" + "Labyrinte valeur:" +  labyrinthe[newX][newY]);
 		} else {
-			System.out.println("Move blocked by wall or out of bounds.");
+			System.out.println("Move blocked by wall or out of bounds. valeur labyrinte:" + labyrinthe[newX][newY]);
 		}
 	}
 	

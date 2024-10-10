@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Position {
 
 	private int x;
@@ -66,7 +63,7 @@ public class Position {
 	}
 
 	public void setCoord(int x, int y) {
-        setX(x);
-        setY(y);
+        setX(Math.max(0, x));
+        setY(Math.max(0, y));
     }
 }

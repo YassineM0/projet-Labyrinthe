@@ -12,9 +12,9 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		int x = 1;       // Position initiale X du héros
-		int y = 1;       // Position initiale Y du héros
-		int vie = 100;   // Points de vie du héros
+		int x = 1;       
+		int y = 1;     
+		int vie = 100;  
 		int attaque = 10;
 		// creation du jeu particulier et de son afficheur
 		PacmanGame game = new PacmanGame(x, y, vie, attaque);

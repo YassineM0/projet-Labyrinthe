@@ -34,33 +34,32 @@ public class PacmanPainter implements GamePainter {
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
 	@Override
-	public void draw(BufferedImage im) {
-		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		int[][] labyrinthe = game.getLabyrinthe();
-		for(int i = 0;i < labyrinthe.length;i++)
-		{
-			for(int j = 0;j < labyrinthe[i].length;j++)
-			{
-				if(labyrinthe[i][j] == 0){
-				crayon.setColor(Color.GRAY);
-				crayon.fillRect(i * 50, j * 50, 50, 50);
-				} else 
-				{
-					crayon.setColor(Color.WHITE);
-					crayon.fillRect(i * 50, j * 50, 50, 50);
-				}
-			} 
-		}
-		drawHero(crayon);
-	}
+public void draw(BufferedImage im) {
+    Graphics2D crayon = (Graphics2D) im.getGraphics();
+    int[][] labyrinthe = game.getLabyrinthe();
+    
+    for (int i = 0; i < labyrinthe.length; i++) {
+        for (int j = 0; j < labyrinthe[i].length; j++) {
+            if (labyrinthe[i][j] == 1) {
+                crayon.setColor(Color.WHITE);
+            } else { // Wall
+                crayon.setColor(Color.GRAY);
+            }
+            crayon.fillRect(j * 50, i * 50, 50, 50);
+        }
+    }
+
+    drawHero(crayon);
+}
+
 
 	private void drawHero(Graphics2D crayon) {
-        Hero hero = game.getHero();  // Assurez-vous d'avoir une méthode pour obtenir le héros dans votre classe de jeu
+        Hero hero = game.getHero(); 
         int[] heroCoord = hero.getCoordonnees();
         
-        // Dessiner le héros (par exemple, avec une couleur ou une image spécifique)
-        crayon.setColor(Color.BLUE);  // Couleur du héros
-        crayon.fillRect(heroCoord[1] * 50 + 10, heroCoord[0] * 50 + 10, 30, 30);  // Ajustez la position et la taille
+      
+        crayon.setColor(Color.BLUE);  
+        crayon.fillRect(heroCoord[1] * 50 + 10, heroCoord[0] * 50 + 10, 30, 30);  
     }
 
 	@Override

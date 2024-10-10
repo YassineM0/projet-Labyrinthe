@@ -40,17 +40,30 @@ public class PacmanController implements GameController {
 	/**
 	 * met a jour les commandes en fonctions des touches appuyees
 	 */
-	public void keyPressed(KeyEvent e) {
+public void keyPressed(KeyEvent e) {
+    switch (e.getKeyChar()) {
+        case 'd':  
+        case 'D':
+            this.commandeEnCours = Cmd.UP;
+            break;
+        case 'q':  
+        case 'Q':
+            this.commandeEnCours = Cmd.DOWN;
+            break;
+        case 'z':  
+        case 'Z':
+            this.commandeEnCours = Cmd.LEFT;
+            break;
+        case 's':  
+        case 'S':
+            this.commandeEnCours = Cmd.RIGHT;
+            break;
+        default:
+            this.commandeEnCours = Cmd.IDLE;
+            break;
+    }
+}
 
-		switch (e.getKeyChar()) {
-		// si on appuie sur 'q',commande joueur est gauche
-		case 'l':
-		case 'L':
-			this.commandeEnCours = Cmd.LEFT;
-			break;
-		}
-
-	}
 
 	@Override
 	/**
