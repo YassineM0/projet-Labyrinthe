@@ -11,6 +11,7 @@ import engine.Game;
  * 
  */
 public class PacmanGame implements Game {
+	private Hero hero;
 	private int[][] labyrinthe;
 	
 
@@ -44,9 +45,13 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
-	public PacmanGame(String source) {
+	public PacmanGame(int x, int y, int vie, int attaque) {
+		this.hero = new Hero(x, y, vie, attaque);
 		genererLabyrinthe();
 	}
+	public Hero getHero() {
+        return hero;  // Renvoie l'instance du héros
+    }
 
 	/**
 	 * faire evoluer le jeu suite a une commande
@@ -56,7 +61,10 @@ public class PacmanGame implements Game {
 	@Override
 	public void evolve(Cmd commande) {
 		System.out.println("Execute "+commande);
+		hero.move(commande, labyrinthe);
 	}
+
+
 
 	/**
 	 * verifier si le jeu est fini

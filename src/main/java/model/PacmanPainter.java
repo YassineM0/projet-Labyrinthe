@@ -51,7 +51,17 @@ public class PacmanPainter implements GamePainter {
 				}
 			} 
 		}
+		drawHero(crayon);
 	}
+
+	private void drawHero(Graphics2D crayon) {
+        Hero hero = game.getHero();  // Assurez-vous d'avoir une méthode pour obtenir le héros dans votre classe de jeu
+        int[] heroCoord = hero.getCoordonnees();
+        
+        // Dessiner le héros (par exemple, avec une couleur ou une image spécifique)
+        crayon.setColor(Color.BLUE);  // Couleur du héros
+        crayon.fillRect(heroCoord[1] * 50 + 10, heroCoord[0] * 50 + 10, 30, 30);  // Ajustez la position et la taille
+    }
 
 	@Override
 	public int getWidth() {

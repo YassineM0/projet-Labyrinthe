@@ -1,6 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
+package model;
+
 import java.util.Scanner;
+
+import engine.Cmd;
 
 public class Hero extends Personnage {
 
@@ -8,20 +10,41 @@ public class Hero extends Personnage {
         super(x, y, vie, attaque);
     }
 
-    public ArrayList<Integer> positionHeros() {
-        System.out.print("Saisissez direction heros (z,q,s,d) : ");
+    public Cmd positionHeros() {
+        System.out.print("Saisissez direction héros (z,q,s,d) : ");
         Scanner sc = new Scanner(System.in);
-        String cmd = sc.nextLine();
-        // sc.close();
-        return position(cmd);
+        String cmd = sc.nextLine().toLowerCase();
+
+        // Convertir l'entrée en commande Cmd
+        switch (cmd) {
+            case "z":
+                System.out.println("test z");
+                return Cmd.UP;
+            case "q":
+                return Cmd.LEFT;
+            case "s":
+                return Cmd.DOWN;
+            case "d":
+                return Cmd.RIGHT;
+            default:
+                System.out.println("Commande invalide, veuillez réessayer.");
+                return Cmd.IDLE;  
+        }
     }
 
-    public void deplacementHero(ArrayList<List<Integer>> plateau) {
-        ArrayList<Integer> tesCoord;
-        do {
-            tesCoord=positionHeros();
+    @Override
+    public void move(Cmd direction, int[][] labyrinthe) {
+        if (direction != Cmd.IDLE) {
+            super.move(direction, labyrinthe);
         }
-        while (mouvPossible(plateau, tesCoord)==false);
-        setCoord(tesCoord);
+    }
+    
+
+    public void deplacementHero(int[][] labyrinthe) {
+        Cmd direction;
+        do {
+            direction = positionHeros(); 
+            move(direction, labyrinthe);   
+        } while (direction != Cmd.IDLE);  
     }
 }

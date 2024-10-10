@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+package model;
+
+import engine.Cmd;
 
 public class Personnage extends Position {
 
@@ -12,22 +14,43 @@ public class Personnage extends Position {
 		this.attaque=attaque;
 	}
 
-	public ArrayList<Integer> position(String cmd) {
-		ArrayList<Integer> coord = new ArrayList<Integer>(getCoord());
-		if(cmd.equals("z")) {
-			coord.set(1,coord.get(1)+1);
+	public void move(Cmd cmd, int[][] labyrinthe) {
+		int newX = getX();
+		int newY = getY();
+	
+		System.out.println("Current Position: (" + newX + ", " + newY + ")");
+		System.out.println("Command received: " + cmd);
+	
+		switch (cmd) {
+			case UP:
+				newY -= 1; // Move up decreases Y
+				break;
+			case DOWN:
+				newY += 1; // Move down increases Y
+				break;
+			case LEFT:
+				newX -= 1; // Move left decreases X
+				break;
+			case RIGHT:
+				newX += 1; // Move right increases X
+				break;
+			case IDLE:
+				System.out.println("Hero is idle.");
+				return;  
 		}
-		if(cmd.equals("q")) {
-			coord.set(0,coord.get(0)-1);
+	
+		// Check if the move is possible
+		if (mouvPossible(labyrinthe, newX, newY)) {
+			setCoord(newX, newY);
+			System.out.println("Hero moved to: (" + newX + ", " + newY + ")");
+		} else {
+			System.out.println("Move blocked by wall or out of bounds.");
 		}
-		if(cmd.equals("s")) {
-			coord.set(1,coord.get(1)-1);
-		}
-		if(cmd.equals("d")) {
-			coord.set(0,coord.get(0)+1);
-		}
-		return coord;
 	}
+	
+	public int[] getCoordonnees() {
+        return new int[]{getX(), getY()};
+    }
 
 	public int getVie() {
 		return vie;

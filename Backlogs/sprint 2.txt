@@ -1,0 +1,13 @@
+Backlog du Sprint 2
+Lors du premier sprint, toutes les tâches ont été validées avec succès, à l'exception de la dernière qui concernait le déplacement du héros dans le labyrinthe. Les membres ont réalisé les tâches suivantes :
+
+-Implémentation de la génération d'un labyrinthe par défaut (Validée).
+-Implémentation de la classe du héros (Validée).
+-Placement initial du héros sur le plateau de jeu et tests du positionnement (Validée).
+- Fonctionnalité de déplacement du héros dans le labyrinthe (Non validée).
+Pour ce deuxième sprint, nous allons nous concentrer sur les nouvelles fonctionnalités ainsi que sur l'amélioration du déplacement du héros. Voici la répartition des tâches :
+
+-Yassine Mouadden : Implémenter la génération aléatoire d'obstacles dans le labyrinthe.
+-Haytam El Ouagari : Implémenter les classes fantôme et monstre.
+-Imane Boughelem et Adrien Chaigneau : Travailler ensemble sur l'amélioration de la fonctionnalité de déplacement du héros dans le labyrinthe, en prenant en compte les nouveaux obstacles et ennemis.
+-L'objectif de ce sprint est d'ajouter de nouveaux éléments de jeu, tout en améliorant les fonctionnalités de base pour une expérience plus interactive et dynamique.

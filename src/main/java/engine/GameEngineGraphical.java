@@ -1,5 +1,7 @@
 package engine;
 
+import java.awt.image.BufferedImage;
+
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -61,9 +63,11 @@ public class GameEngineGraphical {
 			// fait evoluer le game
 			this.game.evolve(c);
 			// affiche le game
-			this.gui.paint();
-			// met en attente
-			Thread.sleep(100);
+			this.gamePainter.draw(new BufferedImage(gamePainter.getWidth(), gamePainter.getHeight(), BufferedImage.TYPE_INT_RGB));  
+            this.gui.paint();  // Mise à jour de l'affichage
+            
+            // Met en attente
+            Thread.sleep(100);  
 		}
 	}
 

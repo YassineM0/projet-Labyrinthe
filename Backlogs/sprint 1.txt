@@ -1,0 +1,7 @@
+Backlog du Sprint 1
+Lors du premier TP, nous avons créé un repository privé pour le projet sur GitHub et avons ajouté tous les membres en tant que collaborateurs : https://github.com/YassineM0/projet-Labyrinthe.git
+. Voici la répartition des tâches pour le Sprint 1 :
+             - Yassine Mouadden se chargera de l'implémentation de la génération d'un labyrinthe par défaut.
+             - Haytam El Ouagari s'occupera de l'implémentation de la classe du héros.
+             - Adrien Chaigneau assurera le placement initial du héros sur le plateau de jeu et testera son positionnement.
+             - Enfin, Imane Boughelem implémentera les fonctionnalités permettant de déplacer le héros dans le labyrinthe.
