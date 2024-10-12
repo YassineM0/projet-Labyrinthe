@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import engine.Cmd;
 import engine.Game;
 
@@ -13,6 +15,7 @@ import engine.Game;
 public class PacmanGame implements Game {
 	private Hero hero;
 	private int[][] labyrinthe;
+	private ArrayList<Monster> monstres;
 	
 
 	private void genererLabyrinthe()
@@ -48,7 +51,12 @@ public class PacmanGame implements Game {
 	public PacmanGame(int x, int y, int vie, int attaque) {
 		this.hero = new Hero(x, y, vie, attaque);
 		genererLabyrinthe();
+		this.monstres = new ArrayList<>();
 	}
+	public Monster trouverMonstreProche() {
+        // Simplification : on suppose que le monstre le plus proche est le premier de la liste
+        return monstres.isEmpty() ? null : monstres.get(0);
+    }
 	public Hero getHero() {
         return hero;  // Renvoie l'instance du héros
     }
@@ -62,7 +70,22 @@ public class PacmanGame implements Game {
 	public void evolve(Cmd commande) {
 		System.out.println("Execute "+commande);
 		hero.move(commande, labyrinthe);
+		if (commande == Cmd.ATTACK) {
+            Monster monstreProche = detecterMonstre();  // Trouver un monstre à proximité
+            hero.attack(monstreProche);}// Attaquer le monstre
 	}
+	public Monster detecterMonstre() {
+        for (Monster monstre :monstres) {
+            int[] positionMonstre = monstre.getCoord();
+            int xMonstre = positionMonstre[0];
+            int yMonstre = positionMonstre[1];
+
+            if (Math.abs(hero.getX() - xMonstre) <= 1 && Math.abs(hero.getY() - yMonstre) <= 1) {
+                return monstre;
+            }
+        }
+        return null;
+}
 
 
 

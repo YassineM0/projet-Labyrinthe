@@ -11,7 +11,7 @@ public class Hero extends Personnage {
     }
 
     public Cmd positionHeros() {
-        System.out.print("Saisissez direction héros (z,q,s,d) : ");
+        System.out.print("Saisissez direction héros (z,q,s,d) ou  attaquer (a) : ");
         Scanner sc = new Scanner(System.in);
         String cmd = sc.nextLine().toLowerCase();
 
@@ -26,7 +26,10 @@ public class Hero extends Personnage {
                 return Cmd.DOWN;
             case "d":
                 return Cmd.RIGHT;
+            case "a":  // Touche pour attaquer
+                return Cmd.ATTACK;
             default:
+            
                 System.out.println("Commande invalide, veuillez réessayer.");
                 return Cmd.IDLE;  
         }
@@ -46,5 +49,21 @@ public class Hero extends Personnage {
             direction = positionHeros(); 
             move(direction, labyrinthe);   
         } while (direction != Cmd.IDLE);  
+    }
+ // Méthode pour attaquer un monstre
+    public void attack(Monster monstre) {
+        if (monstre != null) {
+            int damage = getAttaque();  // Utilise getAttaque() hérité de Personnage
+            monstre.setVie(monstre.getVie() - damage);  // Réduire la vie du monstre
+            System.out.println("Vous avez infligé " + damage + " points de dégâts à " + monstre.getName());
+
+            // Si le monstre est mort (vie <= 0)
+            if (monstre.getVie() <= 0) {
+                System.out.println(monstre.getName() + " est vaincu !");
+               
+            }
+        } else {
+            System.out.println("Il n'y a pas de monstre à attaquer.");
+        }
     }
 }
