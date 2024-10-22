@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import engine.Cmd;
 import engine.Game;
@@ -23,6 +24,7 @@ public class PacmanGame implements Game {
 		int width = 14;
 		int height = 14;
 		this.labyrinthe = new int[height][width];
+		Random random = new Random();
 
 		for(int i = 0;i < height;i++)
 		{
@@ -33,10 +35,11 @@ public class PacmanGame implements Game {
 					labyrinthe[i][j] = 0;
 				} else
 				{
-					labyrinthe[i][j] = 1;
+					labyrinthe[i][j] = (random.nextInt(100) < 10) ? 0 : 1;
 				}
 			}
 		}
+		labyrinthe[1][1] = 1;
 	}
 
 	public int[][] getLabyrinthe()
