@@ -8,11 +8,22 @@ Fonctionnalité de déplacement du héros dans le labyrinthe (Non validée).
 Pour ce deuxième sprint, nous avons également réalisé un diagramme UML des classes décrivant les différentes fonctionnalités à implémenter. Nous allons nous concentrer sur les nouvelles fonctionnalités ainsi que sur l'amélioration du déplacement du héros. Voici la répartition des tâches :
 
 Yassine Mouadden : Implémenter la génération aléatoire d'obstacles dans le labyrinthe.
+  * Un seul type d'obstacle ? 
+  * durée estimée ? 
+
 Haytam El Ouagari : Implémenter les classes fantôme et monstre.
+  * Quelles sont leurs caractéristiques ? 
+  * Durée ?
+
+
 Imane Boughelem et Adrien Chaigneau : Travailler ensemble sur l'amélioration de la fonctionnalité de déplacement du héros dans le labyrinthe, en prenant en compte les nouveaux obstacles et ennemis.
+  * Beaucoup trop flou comme tâche
+  * "travailler ensembl" => pas besoin de l'écrire, la tâche est assignée à deux personnes
+
 L'objectif de ce sprint est d'ajouter de nouveaux éléments de jeu, tout en améliorant les fonctionnalités de base pour une expérience plus interactive et dynamique..
 
-
+* Essayez d'avoir une structure de backlog plus formatée et de ne pas mélanger des phrases de textes explicatives avec vos tâches (qui doivent ête plus détaillées). 
+* Y a-t-il des dépendences entre les tâches ? Si oui, le préciser
 
 
 
