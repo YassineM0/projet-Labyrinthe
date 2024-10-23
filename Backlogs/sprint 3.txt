@@ -1,0 +1,25 @@
+Sprint 3: Finalisation et Améliorations du Labyrinthe
+
+Objectif principal :
+
+Optimisation des éléments de gameplay.
+Finalisation des aspects visuels et interactifs du jeu.
+Rédaction du fichier README :
+
+Explication des étapes de build et de lancement de l'application.(Yassine 1 journée)
+Référence pour le review.
+Placement et comportement des monstres :(Imane)
+
+Implémentation du mouvement des monstres : Les monstres tentent de capturer le héros.(2 jours)
+Les monstres ont des points de vie et des points d'attaque. Utilisation de la fonction mouvPossible pour les monstres (ne peuvent pas traverser les obstacles). (1 journée)
+Implémentation des fantômes :(Adrien)
+
+Création d'une classe spécifique pour les fantômes. Mouvement aléatoire des fantômes jusqu'à proximité du héros. (4 jours)
+Nouvelle fonction mouvPossible : Les fantômes peuvent traverser les obstacles. (1 journée)
+Conception et design du jeu :(Adrien 2semaines)
+
+Importation et ajustement des modèles graphiques (héros, labyrinthe, obstacles). 
+Ajout de cases spéciales :
+
+Trésors à récupérer, pièges à éviter, objets magiques.(Yassine et Haytam) (4 jours)
+Ajout de passages secrets pour une dimension stratégique.
