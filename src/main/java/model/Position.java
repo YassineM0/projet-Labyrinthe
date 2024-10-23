@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Position {
 
 	private int x;
@@ -15,7 +12,7 @@ public class Position {
 
 	public boolean mouvPossible(int[][] labyrinthe, int x, int y) {
 		if (x >= 0 && x < labyrinthe.length && y >= 0 && y < labyrinthe[0].length) {
-			return labyrinthe[x][y] != 0; 
+			return labyrinthe[x][y] != 0 && labyrinthe[x][y] != 2; 
 		}
 		return false;
 	}

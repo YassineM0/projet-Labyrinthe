@@ -32,7 +32,7 @@ public class PacmanGame implements Game {
 			{
 				if(i == 0 || i == height - 1 || j == 0 || j == width - 1)
 				{
-					labyrinthe[i][j] = 0;
+					labyrinthe[i][j] = 2;
 				} else
 				{
 					labyrinthe[i][j] = (random.nextInt(100) < 10) ? 0 : 1;

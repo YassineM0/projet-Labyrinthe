@@ -42,7 +42,10 @@ public class PacmanPainter implements GamePainter {
 			for (int j = 0; j < labyrinthe[i].length; j++) {
 				if (labyrinthe[i][j] == 1) {
 					crayon.setColor(Color.WHITE);
-				} else { // Wall
+				}else if (labyrinthe[i][j] == 2) {
+					crayon.setColor(Color.BLACK);
+				}
+				 else { // Wall
 					crayon.setColor(Color.GRAY);
 				}
 				crayon.fillRect(j * 50, i * 50, 50, 50);

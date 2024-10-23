@@ -1,0 +1,3 @@
+
+1. Validation des tâches du sprint précédent
+Toutes les tâches du sprint 2 ont été complétées avec succès, incluant la génération aléatoire d'obstacles, le placement des monstres et fantômes, ainsi que l'amélioration du mouvement du héros dans le labyrinthe. Nous allons maintenant nous attaquer aux nouvelles fonctionnalités et ajustements prévus.
