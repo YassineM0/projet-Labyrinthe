@@ -16,6 +16,10 @@ public class Position {
 		}
 		return false;
 	}
+	
+	
+	
+
 
 	public boolean perimetre(int xHero, int yHero, int perimetre) {
         return Math.abs(x - xHero) <= perimetre && Math.abs(y - yHero) <= perimetre;

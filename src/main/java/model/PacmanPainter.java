@@ -53,6 +53,9 @@ public class PacmanPainter implements GamePainter {
 		}
 	
 		drawHero(crayon);
+		for (Monster monstre : game.getMonstres()) {
+	        drawMonster(crayon, monstre);
+	    }
 	}
 	private void drawHero(Graphics2D crayon) {
         Hero hero = game.getHero();  
@@ -62,6 +65,19 @@ public class PacmanPainter implements GamePainter {
         crayon.setColor(Color.BLUE);  
         crayon.fillRect(heroCoord[1] * 50 + 10, heroCoord[0] * 50 + 10, 30, 30); 
     }
+	
+	private void drawMonster(Graphics2D crayon, Monster monstre) {
+	    int[] monsterCoord = monstre.getCoordonnees();
+	    crayon.setColor(Color.RED); // Couleur pour les monstres
+	    crayon.fillRect(monsterCoord[1] * 50 + 10, monsterCoord[0] * 50 + 10, 30, 30);
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public int getWidth() {

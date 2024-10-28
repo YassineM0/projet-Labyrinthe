@@ -55,6 +55,9 @@ public class PacmanGame implements Game {
 		this.hero = new Hero(x, y, vie, attaque);
 		genererLabyrinthe();
 		this.monstres = new ArrayList<>();
+	//	monstres.add(new Monster(3, 3, 10, 2, "Goblin"));
+	  //  monstres.add(new Monster(6, 6, 10, 3, "Orc"));
+	    monstres.add(new Monster(10, 10, 15, 5, "Dragon"));
 	}
 	public Monster trouverMonstreProche() {
         // Simplification : on suppose que le monstre le plus proche est le premier de la liste
@@ -63,6 +66,15 @@ public class PacmanGame implements Game {
 	public Hero getHero() {
         return hero;  // Renvoie l'instance du héros
     }
+	
+	public ArrayList<Monster> getMonstres() {
+	    return monstres;
+	}
+	
+	
+	
+	
+	
 
 	/**
 	 * faire evoluer le jeu suite a une commande
@@ -74,8 +86,17 @@ public class PacmanGame implements Game {
 		System.out.println("Execute "+commande);
 		hero.move(commande, labyrinthe);
 		if (commande == Cmd.ATTACK) {
-            Monster monstreProche = detecterMonstre();  // Trouver un monstre à proximité
+            Monster monstreProche = detecterMonstre(); 
+            if (monstreProche != null) {// Trouver un monstre à proximité
             hero.attack(monstreProche);}// Attaquer le monstre
+            
+		}
+		for (Monster monstre : monstres) {
+	        monstre.mettreAJourMonstre(hero.getX(), hero.getY(), labyrinthe);}
+		//for (Monster monstre : monstres) {
+//	        Cmd moveCmd = monstre.deplacerVersHero(hero.getX(), hero.getY(), labyrinthe);
+	//        monstre.move(moveCmd, labyrinthe);
+	  //  }
 	}
 	public Monster detecterMonstre() {
         for (Monster monstre :monstres) {
