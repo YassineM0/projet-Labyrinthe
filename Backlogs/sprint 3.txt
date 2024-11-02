@@ -1,25 +1,34 @@
-Sprint 3: Finalisation et Améliorations du Labyrinthe
+-Objectif principal : Le troisième sprint vise à optimiser les éléments de gameplay et à finaliser les aspects visuels et interactifs du jeu. Nous nous concentrerons sur l'ajout de fonctionnalités avancées pour les monstres et les fantômes, le design graphique du jeu, et l'intégration de cases spéciales pour enrichir l'expérience du joueur. Ce sprint met également l'accent sur la documentation du projet avec un fichier README détaillé pour le lancement et la maintenance de l'application.
 
-Objectif principal :
 
-Optimisation des éléments de gameplay.
-Finalisation des aspects visuels et interactifs du jeu.
-Rédaction du fichier README :
 
-Explication des étapes de build et de lancement de l'application.(Yassine 1 journée)
-Référence pour le review.
-Placement et comportement des monstres :(Imane)
+-Tâches principales :
+	1-Documentation et README.
 
-Implémentation du mouvement des monstres : Les monstres tentent de capturer le héros.(2 jours)
-Les monstres ont des points de vie et des points d'attaque. Utilisation de la fonction mouvPossible pour les monstres (ne peuvent pas traverser les obstacles). (1 journée)
-Implémentation des fantômes :(Adrien)
+		*Rédaction du fichier README (Responsable : Yassine – 1 journée)
+		*Explication des étapes de build et de lancement de l'application, avec les commandes Maven pour installer et exécuter le projet.
+		*Ajout de références pour faciliter la revue du code.
+		*Placement et Comportement des Monstres
 
-Création d'une classe spécifique pour les fantômes. Mouvement aléatoire des fantômes jusqu'à proximité du héros. (4 jours)
-Nouvelle fonction mouvPossible : Les fantômes peuvent traverser les obstacles. (1 journée)
-Conception et design du jeu :(Adrien 2semaines)
 
-Importation et ajustement des modèles graphiques (héros, labyrinthe, obstacles). 
-Ajout de cases spéciales :
+	2-Implémentation du mouvement des monstres (Responsable : Imane – 2 jours)
+		*Création d'une logique de déplacement où les monstres tentent activement de capturer le héros.
+		*Caractéristiques des monstres (Responsable : Imane – 1 journée)
+		*Ajout de points de vie et de points d'attaque aux monstres.
+		*Utilisation de la fonction mouvPossible pour les déplacements des monstres, leur interdisant de traverser les obstacles.
+		*Implémentation des Fantômes
 
-Trésors à récupérer, pièges à éviter, objets magiques.(Yassine et Haytam) (4 jours)
-Ajout de passages secrets pour une dimension stratégique.
+
+	3-Création et comportement des fantômes (Responsable : Adrien – 4 jours)
+		*Création d’une classe spécifique pour les fantômes, avec un mouvement aléatoire tant qu’ils sont éloignés du héros.
+		*Nouvelle fonction de mouvement (Responsable : Adrien – 1 journée)
+		*Implémentation d'une nouvelle fonction mouvPossible permettant aux fantômes de traverser les obstacles.
+		*Conception et Design Graphique du Jeu
+
+	4-Importation et ajustement des modèles graphiques (Responsable : Adrien – 2 semaines)
+		*Importation des modèles graphiques pour le héros, le labyrinthe, et les obstacles, afin d’améliorer l’esthétique du jeu.
+		*Ajout de Cases Spéciales
+
+	5-Intégration de fonctionnalités de gameplay avancé (Responsables : Yassine et Haytam – 4 jours)
+		*Ajout de trésors à récupérer, de pièges à éviter, et d’objets magiques qui confèrent des avantages stratégiques.
+		*Ajout de passages secrets pour encourager une exploration plus stratégique.
