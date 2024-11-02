@@ -1,4 +1,6 @@
--Objectif principal : Le troisième sprint vise à optimiser les éléments de gameplay et à finaliser les aspects visuels et interactifs du jeu. Nous nous concentrerons sur l'ajout de fonctionnalités avancées pour les monstres et les fantômes, le design graphique du jeu, et l'intégration de cases spéciales pour enrichir l'expérience du joueur. Ce sprint met également l'accent sur la documentation du projet avec un fichier README détaillé pour le lancement et la maintenance de l'application.
+-Objectif principal : Le troisième sprint vise à optimiser les éléments de gameplay et à finaliser les aspects visuels et interactifs du jeu. Nous nous concentrerons sur l'ajout de fonctionnalités avancées
+ pour les monstres et les fantômes, le design graphique du jeu, et l'intégration de cases spéciales pour enrichir l'expérience du joueur.
+ Ce sprint met également l'accent sur la documentation du projet avec un fichier README détaillé pour le lancement et la maintenance de l'application.
 
 
 
