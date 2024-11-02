@@ -47,6 +47,39 @@ public class Personnage extends Position {
 			System.out.println("Move blocked by wall or out of bounds. valeur labyrinte:" + labyrinthe[newX][newY]);
 		}
 	}
+	public void magicMove(Cmd cmd, int[][] labyrinthe) {
+		int newX = getX();
+		int newY = getY();
+	
+		System.out.println("Current Position: (" + newX + ", " + newY + ")");
+		System.out.println("Command received: " + cmd);
+	
+		switch (cmd) {
+			case UP:
+				newY += 2; 
+				break;
+			case DOWN:
+				newY -= 2; 
+				break;
+			case LEFT:
+				newX -= 2; 
+				break;
+			case RIGHT:
+				newX += 2; 
+				break;
+			case IDLE:
+				System.out.println("Hero is idle.");
+				return;  
+		}
+	
+		// Check if the move is possible
+		if (mouvPossible(labyrinthe, newX, newY)) {
+			setCoord(newX, newY);
+			System.out.println("Hero moved to: (" + newX + ", " + newY + ")" + "Labyrinte valeur:" +  labyrinthe[newX][newY]);
+		} else {
+			System.out.println("Move blocked by wall or out of bounds. valeur labyrinte:" + labyrinthe[newX][newY]);
+		}
+	}
 	
 	public int[] getCoordonnees() {
         return new int[]{getX(), getY()};

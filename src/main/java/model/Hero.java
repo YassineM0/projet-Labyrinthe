@@ -6,10 +6,20 @@ import engine.Cmd;
 
 public class Hero extends Personnage {
 
-    public Hero(int x,int y, int vie, int attaque) {
+    private boolean isMagicActive;
+
+    public Hero(int x,int y, int vie, int attaque, boolean isMagicActive) {
         super(x, y, vie, attaque);
+        this.isMagicActive = false;
     }
 
+    public void activateMagic() {
+        isMagicActive = true;
+    }
+    public boolean getIsMagicActive()
+    {
+        return this.isMagicActive;
+    }
     public Cmd positionHeros() {
         System.out.print("Saisissez direction héros (z,q,s,d) ou  attaquer (a) : ");
         Scanner sc = new Scanner(System.in);
@@ -65,5 +75,9 @@ public class Hero extends Personnage {
         } else {
             System.out.println("Il n'y a pas de monstre à attaquer.");
         }
+    }
+
+    public boolean isMagicActive() {
+        return isMagicActive;
     }
 }

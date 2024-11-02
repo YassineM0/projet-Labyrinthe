@@ -21,8 +21,8 @@ public class PacmanPainter implements GamePainter {
 	/**
 	 * la taille des cases
 	 */
-	protected static final int WIDTH = 700;
-	protected static final int HEIGHT = 700;
+	protected static final int WIDTH = 1400;
+	protected static final int HEIGHT = 800;
 
 	/**
 	 * appelle constructeur parent
@@ -90,6 +90,9 @@ public class PacmanPainter implements GamePainter {
                                 break;
                             case 3:
 							crayon.drawImage(tresorImg, j * 50, i * 50, 50, 50, null);
+							break;
+							case 4:
+							crayon.drawImage(magieImg, j * 50, i * 50, 50, 50, null);
 							break;
                             default:
 							crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);

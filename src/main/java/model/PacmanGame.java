@@ -27,8 +27,8 @@ public class PacmanGame implements Game {
 
 	private void genererLabyrinthe()
 	{
-		int width = 14;
-		int height = 14;
+		int width = 28;
+		int height = 16;
 		this.labyrinthe = new int[height][width];
 		Random random = new Random();
 
@@ -48,16 +48,21 @@ public class PacmanGame implements Game {
 		labyrinthe[1][1] = 1;
 		this.tresors = new ArrayList<>();
 
-    	for (int i = 0; i < 1; i++) {
-        	int x, y;
-        	do {
-          	  x = random.nextInt(labyrinthe.length);
-          	  y = random.nextInt(labyrinthe[0].length);
-        	} while (labyrinthe[x][y] != 1);
-			labyrinthe[x][y] = 3;
-        	tresors.add(new Tresor(x, y)); 
+        int x, y;
+        do {
+          	x = random.nextInt(labyrinthe.length);
+          	y = random.nextInt(labyrinthe[0].length);
+        } while (labyrinthe[x][y] != 1);
+		labyrinthe[x][y] = 3;
+        tresors.add(new Tresor(x, y)); 
+		do {
+			x = random.nextInt(labyrinthe.length/2);
+			y = random.nextInt(labyrinthe[0].length/2);
+	  } while (labyrinthe[x][y] != 1);
+	  labyrinthe[x][y] = 4;
+	  
     }
-	}
+	
 
 	
 
@@ -72,7 +77,7 @@ public class PacmanGame implements Game {
 	 */
 	public PacmanGame(int x, int y, int vie, int attaque) {
 		this.finished = false;
-		this.hero = new Hero(x, y, vie, attaque);
+		this.hero = new Hero(x, y, vie, attaque, false);
 		this.tresors = new ArrayList<>();
 		genererLabyrinthe();
 		this.monstres = new ArrayList<>();
@@ -92,6 +97,11 @@ public class PacmanGame implements Game {
 				System.out.println("Treasure collected! Game finished: " + this.isFinished()); // Confirm game state
 				break; // Exit loop after collecting
 			}
+		}
+
+		if(labyrinthe[hero.getX()][hero.getY()] == 4)
+		{
+			hero.activateMagic();
 		}
 	}
 	
@@ -126,8 +136,11 @@ public class PacmanGame implements Game {
 	@Override
 	public void evolve(Cmd commande) {
 		//System.out.println("Execute "+commande);
-		hero.move(commande, labyrinthe);
-
+		if (hero.isMagicActive()) {  
+			hero.magicMove(commande, labyrinthe);
+		} else {
+			hero.move(commande, labyrinthe);
+		}
 		verifierCase();
 
 		if (commande == Cmd.ATTACK) {
