@@ -4,4 +4,17 @@
   <artifactId>acl_ID</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Labyrinthe</name>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <configuration>
+          <mainClass>start.Main</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
