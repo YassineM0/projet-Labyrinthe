@@ -5,6 +5,7 @@ import java.util.Random;
 
 import engine.Cmd;
 import engine.Game;
+import model.casesSpeciales.Tresor;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -16,8 +17,13 @@ import engine.Game;
 public class PacmanGame implements Game {
 	private Hero hero;
 	private int[][] labyrinthe;
+	ArrayList<Tresor> tresors;
 	private ArrayList<Monster> monstres;
-	
+	private boolean finished;
+
+	public ArrayList<Tresor> getTresors() {
+		return tresors; // Returns the list of treasures
+	}
 
 	private void genererLabyrinthe()
 	{
@@ -40,7 +46,20 @@ public class PacmanGame implements Game {
 			}
 		}
 		labyrinthe[1][1] = 1;
+		this.tresors = new ArrayList<>();
+
+    	for (int i = 0; i < 1; i++) {
+        	int x, y;
+        	do {
+          	  x = random.nextInt(labyrinthe.length);
+          	  y = random.nextInt(labyrinthe[0].length);
+        	} while (labyrinthe[x][y] != 1);
+			labyrinthe[x][y] = 3;
+        	tresors.add(new Tresor(x, y)); 
+    }
 	}
+
+	
 
 	public int[][] getLabyrinthe()
 	{
@@ -52,13 +71,36 @@ public class PacmanGame implements Game {
 	 * 
 	 */
 	public PacmanGame(int x, int y, int vie, int attaque) {
+		this.finished = false;
 		this.hero = new Hero(x, y, vie, attaque);
+		this.tresors = new ArrayList<>();
 		genererLabyrinthe();
 		this.monstres = new ArrayList<>();
 	//	monstres.add(new Monster(3, 3, 10, 2, "Goblin"));
 	  //  monstres.add(new Monster(6, 6, 10, 3, "Orc"));
 	    monstres.add(new Monster(10, 10, 15, 5, "Dragon"));
 	}
+
+	private void verifierCase() {
+		// Check for treasure collisions
+		for (Tresor tresor : tresors) {
+			// Debug output
+			System.out.println("Checking collision: Hero at (" + hero.getX() + ", " + hero.getY() + ") with Treasure at (" + tresor.getX() + ", " + tresor.getY() + ")");
+			
+			if (hero.getX() == tresor.getX() && hero.getY() == tresor.getY()) {
+				this.finished = true;
+				System.out.println("Treasure collected! Game finished: " + this.isFinished()); // Confirm game state
+				break; // Exit loop after collecting
+			}
+		}
+	}
+	
+
+	public void setGameFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+	
 	public Monster trouverMonstreProche() {
         // Simplification : on suppose que le monstre le plus proche est le premier de la liste
         return monstres.isEmpty() ? null : monstres.get(0);
@@ -83,8 +125,11 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void evolve(Cmd commande) {
-		System.out.println("Execute "+commande);
+		//System.out.println("Execute "+commande);
 		hero.move(commande, labyrinthe);
+
+		verifierCase();
+
 		if (commande == Cmd.ATTACK) {
             Monster monstreProche = detecterMonstre(); 
             if (monstreProche != null) {// Trouver un monstre à proximité
@@ -119,7 +164,7 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
-		return false;
+		return finished;
 	}
 
 }

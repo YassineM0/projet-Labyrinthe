@@ -1,12 +1,12 @@
 package model;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.*;
+
+import javax.imageio.ImageIO;
 
 import engine.GamePainter;
 
@@ -78,16 +78,26 @@ public class PacmanPainter implements GamePainter {
 		
 		for (int i = 0; i < labyrinthe.length; i++) {
 			for (int j = 0; j < labyrinthe[i].length; j++) {
-				if (labyrinthe[i][j] == 1) {
-					crayon.drawImage(fondImg, j * 50, i * 50, 50, 50, null);
-				}else if (labyrinthe[i][j] == 2) {
-					crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
-				}
-				 else { // Wall
-					crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
-				}
+                        switch (labyrinthe[i][j]) {
+                            case 1:
+                                crayon.drawImage(fondImg, j * 50, i * 50, 50, 50, null);
+                                break;
+                            case 2:
+                                crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
+                                break;
+                            case 0:
+                                crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
+                                break;
+                            case 3:
+							crayon.drawImage(tresorImg, j * 50, i * 50, 50, 50, null);
+							break;
+                            default:
+							crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
+                                break;
+                        }
 			}
 		}
+
 	
 		drawHero(crayon);
 		for (Monster monstre : game.getMonstres()) {

@@ -69,6 +69,8 @@ public class GameEngineGraphical {
             // Met en attente
             Thread.sleep(100);  
 		}
+		System.out.println("Game Over! You collected all treasures.");
+
 	}
 
 }
