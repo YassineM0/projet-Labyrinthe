@@ -12,7 +12,7 @@ public class Hero extends Personnage {
         super(x, y, vie, attaque);
         this.isMagicActive = false;
     }
-
+    
     public void activateMagic() {
         isMagicActive = true;
     }
@@ -80,4 +80,11 @@ public class Hero extends Personnage {
     public boolean isMagicActive() {
         return isMagicActive;
     }
+
+    public void setMagicActive(boolean isMagicActive) {
+        this.isMagicActive = isMagicActive;
+    }
+
+    
+    
 }

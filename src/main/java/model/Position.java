@@ -1,5 +1,7 @@
 package model;
 
+import model.casesSpeciales.Passage;
+
 public class Position {
 
 	private int x;
@@ -69,5 +71,18 @@ public class Position {
 	public void setCoord(int x, int y) {
         setX(x);
         setY(y);
+    }
+	public void tp(Passage p)
+    {
+        if(this.x == p.getX1() && this.y == p.getY1())
+        {
+            this.x = p.getX1();
+			this.y = p.getY1();
+        }
+		else if(this.x == p.getX2() && this.y == p.getY2())
+		{
+			this.x = p.getX1();
+			this.y = p.getY1();
+		}
     }
 }

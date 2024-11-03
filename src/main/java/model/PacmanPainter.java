@@ -79,13 +79,13 @@ public class PacmanPainter implements GamePainter {
 		for (int i = 0; i < labyrinthe.length; i++) {
 			for (int j = 0; j < labyrinthe[i].length; j++) {
                         switch (labyrinthe[i][j]) {
+							case 0:
+                                crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
+                                break;
                             case 1:
                                 crayon.drawImage(fondImg, j * 50, i * 50, 50, 50, null);
                                 break;
                             case 2:
-                                crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
-                                break;
-                            case 0:
                                 crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
                                 break;
                             case 3:
@@ -93,6 +93,9 @@ public class PacmanPainter implements GamePainter {
 							break;
 							case 4:
 							crayon.drawImage(magieImg, j * 50, i * 50, 50, 50, null);
+							break;
+							case 5:
+							crayon.drawImage(trouImg, j * 50, i * 50, 50, 50, null);
 							break;
                             default:
 							crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);

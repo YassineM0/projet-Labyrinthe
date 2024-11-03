@@ -5,6 +5,7 @@ import java.util.Random;
 
 import engine.Cmd;
 import engine.Game;
+import model.casesSpeciales.Passage;
 import model.casesSpeciales.Tresor;
 
 /**
@@ -18,8 +19,10 @@ public class PacmanGame implements Game {
 	private Hero hero;
 	private int[][] labyrinthe;
 	ArrayList<Tresor> tresors;
+	ArrayList<Passage> passages;
 	private ArrayList<Monster> monstres;
 	private boolean finished;
+	Passage p = new Passage();
 
 	public ArrayList<Tresor> getTresors() {
 		return tresors; // Returns the list of treasures
@@ -47,7 +50,7 @@ public class PacmanGame implements Game {
 		}
 		labyrinthe[1][1] = 1;
 		this.tresors = new ArrayList<>();
-
+		//tresor
         int x, y;
         do {
           	x = random.nextInt(labyrinthe.length);
@@ -55,13 +58,27 @@ public class PacmanGame implements Game {
         } while (labyrinthe[x][y] != 1);
 		labyrinthe[x][y] = 3;
         tresors.add(new Tresor(x, y)); 
+		//case magique
 		do {
 			x = random.nextInt(labyrinthe.length/2);
 			y = random.nextInt(labyrinthe[0].length/2);
 	  } while (labyrinthe[x][y] != 1);
 	  labyrinthe[x][y] = 4;
-	  
-    }
+	  //passage
+	  int x1, x2, y1, y2;
+		do {
+    		x1 = random.nextInt(labyrinthe.length/2);
+    		y1 = random.nextInt(labyrinthe[0].length/2);
+    		x2 = random.nextInt(labyrinthe.length);
+    		y2 = random.nextInt(labyrinthe[0].length);
+		} while (labyrinthe[x1][y1] != 1 || labyrinthe[x2][y2] != 1);
+		p.setX1(x1);
+		p.setX2(x2);
+		p.setY1(y1);
+		p.setY2(y2);
+		labyrinthe[x1][y1] = 5;
+		labyrinthe[x2][y2] = 5;	  
+}
 	
 
 	
@@ -103,6 +120,21 @@ public class PacmanGame implements Game {
 		{
 			hero.activateMagic();
 		}
+		
+		if(labyrinthe[hero.getX()][hero.getY()] == 5)
+		{
+			if(hero.getX() == p.getX1() && hero.getY() == p.getY1())
+        {
+            hero.setX(p.getX2());
+			hero.setY(p.getY2());
+        }
+		else if(hero.getX() == p.getX2() && hero.getY() == p.getY2())
+		{
+			hero.setX(p.getX1());
+			hero.setY(p.getY1());
+		}
+		}
+		
 	}
 	
 
