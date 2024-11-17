@@ -1,0 +1,2 @@
+﻿Lors du sprint précédent, certaines tâches n'ont pas été complétées, notamment la création de la classe spécifique pour les fantômes et l'implémentation de leur mouvement aléatoire, l'ajout de points de vie et de points d'attaque aux monstres, ainsi que l'implémentation de la fonction mouvPossible permettant aux fantômes de traverser les obstacles
+Cependant, d'autres tâches ont été réalisées avec succès, comme la génération aléatoire des obstacles, le placement des monstres et des fantômes, ainsi que l'amélioration du mouvement du héros dans le labyrinthe.

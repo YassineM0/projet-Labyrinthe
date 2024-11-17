@@ -1,0 +1,41 @@
+﻿Sprint 4 - Planification des Tâches :
+
+	-Mise à jour du fichier pom.xml (build)
+	Responsable : Yassine
+	Durée estimée : 1 jour
+	Objectif : L’ajout de spécification de version maven
+
+	-Création d’une classe spécifique pour les fantômes, avec un mouvement aléatoire tant qu’ils sont éloignés du héros, et implémentation des fantômes
+	Responsable : Imane
+	Durée estimée : 4 jours
+	Objectif : Développer la classe pour les fantômes et leur donner un comportement de mouvement aléatoire tant qu'ils sont loin du héros.
+	
+	-Ajout de points de vie et de points d'attaque aux monstres
+	Responsable : Haytam
+	Durée estimée : 4 jours
+	Objectif : Implémenter les points de vie et les points d'attaque pour chaque monstre afin d'améliorer l'interaction avec le héros.
+
+	-Régler la vitesse du monstre pour qu'il soit inférieure à celle du héros
+	Responsable : Haytam
+	Durée estimée : 1 jour
+	Objectif : Ajuster la vitesse des monstres pour s'assurer qu'ils ne rattrapent pas le héros trop rapidement.
+
+	-Corriger le bug (exception lors du mouvement hors du labyrinthe)
+	Responsable : Yassine
+	Durée estimée : 1 jour
+	Objectif : Résoudre le problème de l'exception qui se produit lorsque le héros ou un autre personnage sort du labyrinthe.
+
+	-Amélioration de la vue du labyrinthe (zoom sur la carte) et ajustement du mouvement du héros
+	Responsable : Yassine
+	Durée estimée : 1 semaine
+	Objectif : Implémenter un système de zoom pour améliorer la vue du labyrinthe et ajuster les mécaniques de mouvement du héros pour une meilleure expérience de jeu.
+
+	-Mécanisme d’attaque des personnages
+	Responsable : Adrien
+	Durée estimée : 1 semaine
+	Objectif : Développer et intégrer un système d'attaque pour que le héros et les monstres puissent interagir de manière dynamique.
+
+	-Différenciation entre les murs et les obstacles dans le labyrinthe
+	Responsable : Adrien
+	Durée estimée : 1 jour
+	Objectif : Mettre en place une distinction claire entre les murs et les autres obstacles pour mieux gérer les interactions et le comportement des personnages.
