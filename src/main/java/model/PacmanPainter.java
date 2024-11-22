@@ -48,6 +48,7 @@ public class PacmanPainter implements GamePainter {
 	Image tresorImg;
 	Image bonusImg;
 	Image magieImg;
+	Image obstacleImg;
 
 	void images(){
 	try {
@@ -61,6 +62,7 @@ public class PacmanPainter implements GamePainter {
 		tresorImg = ImageIO.read(new File("src/main/java/img/Tresor.png"));
 		bonusImg = ImageIO.read(new File("src/main/java/img/Bonus.png"));
 		magieImg = ImageIO.read(new File("src/main/java/img/Magic.png"));
+		obstacleImg = ImageIO.read(new File("src/main/java/img/Obstacle.png"));	
 	}
 	catch(IOException exc) {
 		exc.printStackTrace();
@@ -80,7 +82,7 @@ public class PacmanPainter implements GamePainter {
 			for (int j = 0; j < labyrinthe[i].length; j++) {
                         switch (labyrinthe[i][j]) {
 							case 0:
-                                crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
+                                crayon.drawImage(obstacleImg, j * 50, i * 50, 50, 50, null);
                                 break;
                             case 1:
                                 crayon.drawImage(fondImg, j * 50, i * 50, 50, 50, null);
