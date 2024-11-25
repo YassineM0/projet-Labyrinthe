@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Random;
 import engine.Cmd;
 import java.util.Collections;
-public class Fontome extends Personnage {
+public class Fantome extends Personnage {
 	    private String name;
 
-	    public Fontome(int x,int y, int vie, int attaque,String name) {
+	    public Fantome(int x,int y, int vie, int attaque,String name) {
 	    	super( x, y,  vie,  attaque);
 	        this.name = name;
 	        

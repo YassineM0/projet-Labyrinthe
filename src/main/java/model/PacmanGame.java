@@ -21,7 +21,7 @@ public class PacmanGame implements Game {
 	ArrayList<Tresor> tresors;
 	ArrayList<Passage> passages;
 	private ArrayList<Monster> monstres;
-	private ArrayList<Fontome> Fontome;
+	private ArrayList<Fantome> Fantome;
 	private boolean finished;
 	Passage p = new Passage();
 
@@ -103,9 +103,9 @@ public class PacmanGame implements Game {
 	
 	  //  monstres.add(new Monster(6, 6, 10, 3, "Orc"));
 	   //monstres.add(new Monster(10, 10, 15, 5, "Dragon"));
-		 this.Fontome = new ArrayList<>();
-		 Fontome.add(new Fontome(2, 3, 15, 7, "Ghosty"));
-	        Fontome.add(new Fontome(5, 5, 12, 6, "Spectre"));
+		 this.Fantome = new ArrayList<>();
+		 Fantome.add(new Fantome(2, 3, 15, 7, "Ghosty"));
+	        Fantome.add(new Fantome(5, 5, 12, 6, "Spectre"));
 	}
 
 	private void verifierCase() {
@@ -120,7 +120,7 @@ public class PacmanGame implements Game {
 				break; // Exit loop after collecting
 			}
 		}
-		for (Fontome fantome : Fontome) {
+		for (Fantome fantome : Fantome) {
 		    if (hero.getX() == fantome.getX() && hero.getY() == fantome.getY()) {
 		        // Réduire directement la vie du héros
 		        int vieRestante = hero.getVie() - fantome.getAttaque();
@@ -178,8 +178,8 @@ public class PacmanGame implements Game {
 	    return monstres;
 	}
 	
-	 public ArrayList<Fontome> getFontomes() {
-	        return Fontome;
+	 public ArrayList<Fantome> getFantomes() {
+	        return Fantome;
 	    }
 	
 	
@@ -212,11 +212,11 @@ public class PacmanGame implements Game {
 //	        Cmd moveCmd = monstre.deplacerVersHero(hero.getX(), hero.getY(), labyrinthe);
 	//        monstre.move(moveCmd, labyrinthe);
 	  //  }
-		// for (Fontome fantome : Fontome) {
+		// for (Fantome fantome : Fantome) {
 	            // Logique de mouvement des fantômes
 	            // Vous pouvez ici gérer leur déplacement, par exemple en les faisant se déplacer vers le héros
-		 for (Fontome fontome : Fontome) {
-	            fontome.deplacementAleatoire(labyrinthe);  // Déplace chaque fantôme de manière aléatoire
+		 for (Fantome fantome : Fantome) {
+	            fantome.deplacementAleatoire(labyrinthe);  // Déplace chaque fantôme de manière aléatoire
 	        }
 	    
 	}

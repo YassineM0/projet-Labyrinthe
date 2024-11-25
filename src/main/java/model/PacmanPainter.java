@@ -114,8 +114,8 @@ public class PacmanPainter implements GamePainter {
 	        drawMonster(crayon, monstre);
 	    }
 		
-		for (Fontome fontome : game.getFontomes()) {
-	        drawFantome(crayon, fontome);
+		for (Fantome fantome : game.getFantomes()) {
+	        drawFantome(crayon, fantome);
 	    }
 		
 	}
@@ -130,9 +130,9 @@ public class PacmanPainter implements GamePainter {
 	    int[] monsterCoord = monstre.getCoordonnees();
 	    crayon.drawImage(monstreImg,monsterCoord[1] * 50 + 10, monsterCoord[0] * 50 + 10, 30, 30,null);
 	}
-	private void drawFantome(Graphics2D crayon, Fontome fontome) {
-	    int[] fontomCoord = fontome.getCoordonnees();
-	    crayon.drawImage(fantomeImg,fontomCoord[1] * 50 + 10, fontomCoord[0] * 50 + 10, 30, 30,null);
+	private void drawFantome(Graphics2D crayon, Fantome fantome) {
+	    int[] fantomCoord = fantome.getCoordonnees();
+	    crayon.drawImage(fantomeImg,fantomCoord[1] * 50 + 10, fantomCoord[0] * 50 + 10, 30, 30,null);
 	}
 	
 	
