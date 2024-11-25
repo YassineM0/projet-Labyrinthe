@@ -1,0 +1,12 @@
+Lors du dernier sprint, nous avons réalisé les tâches suivantes :
+-> Implémentation de la classe Fantômes.
+-> Modification de la vitesse du monstre.
+-> Ajout des points de vie et des points d'attaque du monstre, mais le souci réside dans l'affichage.
+-> Mise à jour du fichier pom.xml.
+-> Correction des bugs d'exception lors du mouvement hors du labyrinthe.
+-> Différenciation entre les murs et les obstacles.
+
+Ce que nous n'avons pas réussi à faire :
+-> Amélioration de la vue du labyrinthe, car nous avons rencontré un problème dans les dimensions des cases du labyrinthe.
+-> Mise en place du mécanisme d'attaque des personnages.
+
