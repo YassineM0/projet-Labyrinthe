@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -99,6 +100,7 @@ public class PacmanPainter implements GamePainter {
 							case 5:
 							crayon.drawImage(trouImg, j * 50, i * 50, 50, 50, null);
 							break;
+							
                             default:
 							crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
                                 break;
@@ -111,6 +113,11 @@ public class PacmanPainter implements GamePainter {
 		for (Monster monstre : game.getMonstres()) {
 	        drawMonster(crayon, monstre);
 	    }
+		
+		for (Fontome fontome : game.getFontomes()) {
+	        drawFantome(crayon, fontome);
+	    }
+		
 	}
 	private void drawHero(Graphics2D crayon) {
         Hero hero = game.getHero();  
@@ -123,8 +130,10 @@ public class PacmanPainter implements GamePainter {
 	    int[] monsterCoord = monstre.getCoordonnees();
 	    crayon.drawImage(monstreImg,monsterCoord[1] * 50 + 10, monsterCoord[0] * 50 + 10, 30, 30,null);
 	}
-	
-	
+	private void drawFantome(Graphics2D crayon, Fontome fontome) {
+	    int[] fontomCoord = fontome.getCoordonnees();
+	    crayon.drawImage(fantomeImg,fontomCoord[1] * 50 + 10, fontomCoord[0] * 50 + 10, 30, 30,null);
+	}
 	
 	
 	

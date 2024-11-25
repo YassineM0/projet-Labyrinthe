@@ -21,6 +21,7 @@ public class PacmanGame implements Game {
 	ArrayList<Tresor> tresors;
 	ArrayList<Passage> passages;
 	private ArrayList<Monster> monstres;
+	private ArrayList<Fontome> Fontome;
 	private boolean finished;
 	Passage p = new Passage();
 
@@ -98,9 +99,13 @@ public class PacmanGame implements Game {
 		this.tresors = new ArrayList<>();
 		genererLabyrinthe();
 		this.monstres = new ArrayList<>();
-	//	monstres.add(new Monster(3, 3, 10, 2, "Goblin"));
+		monstres.add(new Monster(3, 3, 10, 2, "Goblin"));
+	
 	  //  monstres.add(new Monster(6, 6, 10, 3, "Orc"));
-	    monstres.add(new Monster(10, 10, 15, 5, "Dragon"));
+	   //monstres.add(new Monster(10, 10, 15, 5, "Dragon"));
+		 this.Fontome = new ArrayList<>();
+		 Fontome.add(new Fontome(2, 3, 15, 7, "Ghosty"));
+	        Fontome.add(new Fontome(5, 5, 12, 6, "Spectre"));
 	}
 
 	private void verifierCase() {
@@ -115,6 +120,24 @@ public class PacmanGame implements Game {
 				break; // Exit loop after collecting
 			}
 		}
+		for (Fontome fantome : Fontome) {
+		    if (hero.getX() == fantome.getX() && hero.getY() == fantome.getY()) {
+		        // Réduire directement la vie du héros
+		        int vieRestante = hero.getVie() - fantome.getAttaque();
+		        hero.setVie(vieRestante);
+
+		        // Afficher des informations pour débogage
+		        System.out.println("Collision avec un fantôme : " + fantome.getName());
+		        System.out.println("Vie restante du héros : " + hero.getVie());
+
+		        // Vérifier si le héros est mort
+		        if (hero.getVie() <= 0) {
+		            System.out.println("Le héros est mort !");
+		            this.finished = true; // Terminer le jeu
+		        }
+		    }
+		}
+
 
 		if(labyrinthe[hero.getX()][hero.getY()] == 4)
 		{
@@ -155,7 +178,9 @@ public class PacmanGame implements Game {
 	    return monstres;
 	}
 	
-	
+	 public ArrayList<Fontome> getFontomes() {
+	        return Fontome;
+	    }
 	
 	
 	
@@ -187,6 +212,13 @@ public class PacmanGame implements Game {
 //	        Cmd moveCmd = monstre.deplacerVersHero(hero.getX(), hero.getY(), labyrinthe);
 	//        monstre.move(moveCmd, labyrinthe);
 	  //  }
+		// for (Fontome fantome : Fontome) {
+	            // Logique de mouvement des fantômes
+	            // Vous pouvez ici gérer leur déplacement, par exemple en les faisant se déplacer vers le héros
+		 for (Fontome fontome : Fontome) {
+	            fontome.deplacementAleatoire(labyrinthe);  // Déplace chaque fantôme de manière aléatoire
+	        }
+	    
 	}
 	public Monster detecterMonstre() {
         for (Monster monstre :monstres) {
