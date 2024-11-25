@@ -1,0 +1,50 @@
+
+Sprint 5 - Finalisation du jeu :
+	Gameplay:
+		*Mécaniques de Jeu:
+			-Implémentation des points de vie dans le jeu
+			-Responsable : Yassine
+			-Durée estimée : 2 jours
+			-Objectif : Ajouter un système de points de vie pour le héros et les ennemis afin de mieux gérer les interactions et les conditions de victoire/défaite.
+
+		*Mécanisme d'attaque:
+			-Responsable : Haitam
+			-Durée estimée : 3 jours
+			-Objectif : Implémenter les mécanismes d'attaque pour les personnages, permettant des interactions dynamiques entre le héros et les ennemis.
+
+		*Modification de la case magique
+			-Responsable : Haitam
+			-Durée estimée : 2 jours
+			-Objectif : Réviser le comportement de la case magique pour apporter des avantages temporaires ou permanents au héros, comme l'augmentation de la vitesse.
+
+		*Modifier le comportement des fantômes
+			-Responsable : Imane
+			-Durée estimée : 5 jours
+			-Objectif : Adapter les fantômes pour inclure des mouvements plus stratégiques et un mécanisme d'attaque afin d’augmenter la difficulté.
+
+		*Interface Utilisateur
+			-Écran de victoire et de défaite
+			-Responsable : Adrien
+			-Durée estimée : 3 jours
+			-Objectif : Concevoir et implémenter des écrans distincts pour afficher les conditions de victoire et de défaite aux joueurs.
+	User Experience:
+
+		*Amélioration de l’affichage du labyrinthe (Tâche bonus)
+			-Responsable : Yassine
+			-Durée estimée : 2 jours
+			-Objectif : Optimiser l’affichage du labyrinthe centré sur le personage.
+
+		*Progression et Niveau de Jeu
+			-Implémentation des niveaux
+			-Responsable : Adrien
+			-Durée estimée : 4 jours
+			-Objectif : Ajouter plusieurs niveaux avec une difficulté croissante pour diversifier le gameplay.
+		*Documentation et Modélisation
+			-Diagramme de classes
+			-Responsable : Adrien
+			-Durée estimée : 2 jours
+			-Objectif : Créer un diagramme UML des classes pour représenter l'architecture et les relations entre les entités du projet.
+	*Implementation de tests:
+		-Responsable : Iman
+		-Durée estimée : 2 jours
+		-Implementation de tests Junit
