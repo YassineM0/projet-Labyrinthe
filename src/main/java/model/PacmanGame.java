@@ -21,9 +21,10 @@ public class PacmanGame implements Game {
 	ArrayList<Tresor> tresors;
 	ArrayList<Passage> passages;
 	private ArrayList<Monster> monstres;
-	private ArrayList<Fantome> Fantome;
+	private ArrayList<Fantome> fantomes;
 	private boolean finished;
 	Passage p = new Passage();
+	 private int niveau; 
 
 	public ArrayList<Tresor> getTresors() {
 		return tresors; // Returns the list of treasures
@@ -98,14 +99,15 @@ public class PacmanGame implements Game {
 		this.hero = new Hero(x, y, vie, attaque, false);
 		this.tresors = new ArrayList<>();
 		genererLabyrinthe();
+		this.niveau = 1;
 		this.monstres = new ArrayList<>();
-		monstres.add(new Monster(3, 3, 10, 2, "Goblin"));
+		monstres.add(new Monster(13, 13, 10, 2, "Goblin"));
 	
 	  //  monstres.add(new Monster(6, 6, 10, 3, "Orc"));
 	   //monstres.add(new Monster(10, 10, 15, 5, "Dragon"));
-		 this.Fantome = new ArrayList<>();
-		 Fantome.add(new Fantome(2, 3, 15, 7, "Ghosty"));
-	        Fantome.add(new Fantome(5, 5, 12, 6, "Spectre"));
+		this.fantomes = new ArrayList<>();
+		fantomes.add(new Fantome(8, 11, 15, 7, "Ghosty"));
+	//	fantomes.add(new Fantome(5, 5, 12, 6, "Spectre"));
 	}
 
 	private void verifierCase() {
@@ -120,14 +122,10 @@ public class PacmanGame implements Game {
 				break; // Exit loop after collecting
 			}
 		}
-		for (Fantome fantome : Fantome) {
+		for (Fantome fantome : fantomes) {
 		    if (hero.getX() == fantome.getX() && hero.getY() == fantome.getY()) {
-		        // Réduire directement la vie du héros
-		        int vieRestante = hero.getVie() - fantome.getAttaque();
-		        hero.setVie(vieRestante);
-
-		        // Afficher des informations pour débogage
-		        System.out.println("Collision avec un fantôme : " + fantome.getName());
+		        hero.setVie(hero.getVie() - fantome.getAttaque());
+		        System.out.println("Collision avec le fantôme : " + fantome.getName());
 		        System.out.println("Vie restante du héros : " + hero.getVie());
 
 		        // Vérifier si le héros est mort
@@ -137,6 +135,7 @@ public class PacmanGame implements Game {
 		        }
 		    }
 		}
+
 
 
 		if(labyrinthe[hero.getX()][hero.getY()] == 4)
@@ -179,7 +178,7 @@ public class PacmanGame implements Game {
 	}
 	
 	 public ArrayList<Fantome> getFantomes() {
-	        return Fantome;
+	        return fantomes;
 	    }
 	
 	
@@ -215,9 +214,9 @@ public class PacmanGame implements Game {
 		// for (Fantome fantome : Fantome) {
 	            // Logique de mouvement des fantômes
 	            // Vous pouvez ici gérer leur déplacement, par exemple en les faisant se déplacer vers le héros
-		 for (Fantome fantome : Fantome) {
-	            fantome.deplacementAleatoire(labyrinthe);  // Déplace chaque fantôme de manière aléatoire
-	        }
+		for (Fantome fantome : fantomes) {
+		    fantome.mettreAJourMonstre(hero.getX(), hero.getY(), labyrinthe, hero,niveau);
+		}
 	    
 	}
 	public Monster detecterMonstre() {

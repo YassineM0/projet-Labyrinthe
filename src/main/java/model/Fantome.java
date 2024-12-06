@@ -1,120 +1,114 @@
 package model;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
 import engine.Cmd;
-import java.util.Collections;
+import java.util.Random;
+
 public class Fantome extends Personnage {
-	    private String name;
+    private String name;
+    private int vitesse; // Vitesse du fantôme (nombre de cycles avant chaque mouvement)
 
-	    public Fantome(int x,int y, int vie, int attaque,String name) {
-	    	super( x, y,  vie,  attaque);
-	        this.name = name;
-	        
-	    }
-	    // Récupérer le nom du monstre
-	    public String getName() {
-	        return name;
-	    }
-	    
-	    
+    public Fantome(int x, int y, int vie, int attaque, String name) {
+        super(x, y, vie, attaque);
+        this.name = name;
+        this.vitesse = 5; // Par défaut, vitesse initiale
+    }
 
-	    // Dans votre classe Monster
-	 
+    public String getName() {
+        return name;
+    }
 
-	    public Cmd deplacementAleatoire(int[][] labyrinthe) {
-	        int monsterX = getX();
-	        int monsterY = getY();
-	        Random rand = new Random();
-	        Cmd[] directions = {Cmd.LEFT, Cmd.RIGHT, Cmd.UP, Cmd.DOWN};
-	        
-	        // Mélanger les directions pour un déplacement aléatoire
-	        for (int i = 0; i < directions.length; i++) {
-	            int randomIndex = rand.nextInt(directions.length);
-	            Cmd temp = directions[i];
-	            directions[i] = directions[randomIndex];
-	            directions[randomIndex] = temp;
-	        }
-	        
-	        // Tenter de se déplacer dans une direction aléatoire
-	        for (Cmd cmd : directions) {
-	            int newX = monsterX;
-	            int newY = monsterY;
-	            
-	            switch (cmd) {
-	                case LEFT:  newX--; break;
-	                case RIGHT: newX++; break;
-	                case UP:    newY--; break;
-	                case DOWN:  newY++; break;
-	            }
+    // Ajuster la vitesse du fantôme en fonction du niveau
+    public void ajusterVitesse(int niveau) {
+        this.vitesse = Math.max(1, 5 - niveau); // Plus le niveau est élevé, plus les fantômes sont rapides
+    }
 
-	            // Vérifier si le mouvement est possible
-	            if (mouvPossible(labyrinthe, newX, newY)) {
-	                setX(newX);
-	                setY(newY);
-	                return cmd; // Retourner la commande effectuée
-	            }
-	        }
+    // Déplacement aléatoire avec gestion des murs
+    public boolean deplacementAleatoire(int[][] labyrinthe) {
+        Random rand = new Random();
+        Cmd[] directions = {Cmd.LEFT, Cmd.RIGHT, Cmd.UP, Cmd.DOWN};
+        int randomIndex = rand.nextInt(directions.length);
+        int newX = getX();
+        int newY = getY();
 
-	        return Cmd.IDLE; // Si aucun mouvement n'est possible
-	    }
+        switch (directions[randomIndex]) {
+            case LEFT:  newX = getX() - 1; break;
+            case RIGHT: newX = getX() + 1; break;
+            case UP:    newY = getY() - 1; break;
+            case DOWN:  newY = getY() + 1; break;
+        }
 
-	    public Cmd deplacerVersHero(int heroX, int heroY, int[][] labyrinthe) {
-	        int monsterX = getX();
-	        int monsterY = getY();
+        // Vérifier si la case est valide pour le déplacement
+        if (newX >= 0 && newX < labyrinthe[0].length && newY >= 0 && newY < labyrinthe.length && labyrinthe[newY][newX] == 1) {
+            setX(newX);
+            setY(newY);
+            return true;
+        }
+        return false;
+    }
 
-	        // Imprimer les positions pour débogage
-	        System.out.println("Monstre position actuelle: (" + monsterX + ", " + monsterY + ")");
-	        System.out.println("Héros position actuelle: (" + heroX + ", " + heroY + ")");
+    // Déplacement vers le héros, avec gestion des murs
+    public boolean deplacerVersHero(int heroX, int heroY, int[][] labyrinthe) {
+        int monsterX = getX();
+        int monsterY = getY();
 
-	        // Calculer les coordonnées de la nouvelle position
-	        int newX = monsterX;
-	        int newY = monsterY;
+        int newX = monsterX;
+        int newY = monsterY;
 
-	        // Calculer la direction vers le héros
-	        if (monsterX < heroX && mouvPossible(labyrinthe, monsterX + 1, monsterY)) {
-	            newX++; // Aller à droite
-	        } else if (monsterX > heroX && mouvPossible(labyrinthe, monsterX - 1, monsterY)) {
-	            newX--; // Aller à gauche
-	        }
+        if (monsterX < heroX) {
+            newX = monsterX + 1;
+        } else if (monsterX > heroX) {
+            newX = monsterX - 1;
+        }
 
-	        if (monsterY < heroY && mouvPossible(labyrinthe, monsterX, monsterY + 1)) {
-	            newY++; // Aller en bas
-	        } else if (monsterY > heroY && mouvPossible(labyrinthe, monsterX, monsterY - 1)) {
-	            newY--; // Aller en haut
-	        }
+        if (monsterY < heroY) {
+            newY = monsterY + 1;
+        } else if (monsterY > heroY) {
+            newY = monsterY - 1;
+        }
 
-	        // Vérifier si le mouvement est possible
-	        if (newX != monsterX || newY != monsterY) {
-	            // Déplacer le monstre
-	            setX(newX);
-	            setY(newY);
-	            System.out.println("Monstre déplacé vers: (" + newX + ", " + newY + ")"); // Débogage
-	            // Retourner la commande qui a été effectuée
-	            if (newX != monsterX) {
-	                return newX > monsterX ? Cmd.RIGHT : Cmd.LEFT;
-	            } else {
-	                return newY > monsterY ? Cmd.DOWN : Cmd.UP;
-	            }
-	        }
+        // Vérifier si la case est valide pour le déplacement
+        if (newX >= 0 && newX < labyrinthe[0].length && newY >= 0 && newY < labyrinthe.length && labyrinthe[newY][newX] == 1) {
+            setX(newX);
+            setY(newY);
+            return true;
+        }
+        return false;
+    }
 
-	        // Si le mouvement n'est pas possible, retourner IDLE
-	        System.out.println("Mouvement impossible, reste IDLE."); // Débogage
-	        return Cmd.IDLE;
-	    }
-	    public void mettreAJourMonstre(int heroX, int heroY, int[][] labyrinthe) {
-	        int distance = Math.abs(heroX - getX()) + Math.abs(heroY - getY());
+    // Attaquer le héros si adjacent
+    public void attaquerHero(Hero hero) {
+        int distanceX = Math.abs(hero.getX() - getX());
+        int distanceY = Math.abs(hero.getY() - getY());
 
-	        if (distance < 5) { // Si le héros est à moins de 5 unités, suivre le héros
-	            deplacerVersHero(heroX, heroY, labyrinthe);
-	        } else { // Sinon, se déplacer aléatoirement
-	            deplacementAleatoire(labyrinthe);
-	        }
-	    }
+        // Vérifier si le héros est adjacent au fantôme
+        if ((distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1)) {
+            hero.setVie(hero.getVie() - getAttaque()); // Réduit les points de vie du héros
+            System.out.println("Fantôme " + name + " attaque le héros ! Vie restante du héros : " + hero.getVie());
 
+            // Vérifier si le héros est mort
+            if (hero.getVie() <= 0) {
+                System.out.println("Le héros est mort !");
+            }
+        }
+    }
 
+    // Mise à jour du fantôme
+    public void mettreAJourMonstre(int heroX, int heroY, int[][] labyrinthe, Hero hero, int niveau) {
+        ajusterVitesse(niveau); // Ajuster la vitesse selon le niveau
+        boolean moved = false;
 
+        // Vérifier si le héros est adjacent et attaquer
+        attaquerHero(hero);
 
+        // Si le héros est proche, tenter de se déplacer vers lui
+        if (Math.abs(heroX - getX()) + Math.abs(heroY - getY()) < 10) {
+            moved = deplacerVersHero(heroX, heroY, labyrinthe);
+        }
 
+        // Si le héros est loin ou le déplacement vers lui est bloqué, déplacement aléatoire
+        if (!moved) {
+            deplacementAleatoire(labyrinthe);
+        }
+    }
 }
+
