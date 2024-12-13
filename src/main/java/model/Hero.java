@@ -7,15 +7,26 @@ import engine.Cmd;
 public class Hero extends Personnage {
 
     private boolean isMagicActive;
+    private int health;
 
     public Hero(int x,int y, int vie, int attaque, boolean isMagicActive) {
         super(x, y, vie, attaque);
         this.isMagicActive = false;
+        this.health = 100;
     }
     
     public void activateMagic() {
         isMagicActive = true;
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void takeDamage(int damage) {
+        this.health = Math.max(0, this.health - damage);
+    }
+
     public boolean getIsMagicActive()
     {
         return this.isMagicActive;

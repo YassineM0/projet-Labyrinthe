@@ -117,7 +117,21 @@ public class PacmanPainter implements GamePainter {
 		for (Fantome fantome : game.getFantomes()) {
 	        drawFantome(crayon, fantome);
 	    }
+		drawHeroHealth(crayon);
 		
+	}
+	private void drawHeroHealth(Graphics2D crayon) {
+		Hero hero = game.getHero();
+		int health = hero.getHealth();
+	
+		crayon.setColor(Color.RED);
+		crayon.fillRect(10, 10, 200, 30);
+	
+		crayon.setColor(Color.GREEN);
+		crayon.fillRect(10, 10, (int) (200 * (health / 100.0)), 30);
+	
+		crayon.setColor(Color.BLACK);
+		crayon.drawString("Health: " + health + " / 100", 20, 30);
 	}
 	private void drawHero(Graphics2D crayon) {
         Hero hero = game.getHero();  
