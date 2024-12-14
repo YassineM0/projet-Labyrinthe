@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -118,6 +119,15 @@ public class PacmanPainter implements GamePainter {
 	        drawFantome(crayon, fantome);
 	    }
 		drawHeroHealth(crayon);
+
+		if (game.isFinished()) {
+			crayon.setFont(new Font("Arial", Font.BOLD, 50));
+			crayon.setColor(Color.RED);
+			String message = "Game Over";
+			int x = (WIDTH - crayon.getFontMetrics().stringWidth(message)) / 2;
+			int y = HEIGHT / 2;
+			crayon.drawString(message, x, y);
+		}
 		
 	}
 	private void drawHeroHealth(Graphics2D crayon) {
@@ -149,6 +159,7 @@ public class PacmanPainter implements GamePainter {
 	    int[] fantomCoord = fantome.getCoordonnees();
 	    crayon.drawImage(fantomeImg,fantomCoord[1] * 50 + 10, fantomCoord[0] * 50 + 10, 30, 30,null);
 	}
+	
 	
 	
 	

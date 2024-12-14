@@ -16,6 +16,7 @@ import model.casesSpeciales.Tresor;
  * 
  */
 public class PacmanGame implements Game {
+	private boolean gameOver = false;
 	private Hero hero;
 	private int[][] labyrinthe;
 	ArrayList<Tresor> tresors;

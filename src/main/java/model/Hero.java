@@ -23,6 +23,9 @@ public class Hero extends Personnage {
         return health;
     }
 
+    
+    
+
     public void takeDamage(int damage) {
         this.health = Math.max(0, this.health - damage);
     }

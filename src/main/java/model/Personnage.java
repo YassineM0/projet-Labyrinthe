@@ -101,4 +101,7 @@ public class Personnage extends Position {
 		this.attaque = attaque;
 	}
 
+	public boolean estMort() {
+        return this.vie <= 0;
+    }
 }
