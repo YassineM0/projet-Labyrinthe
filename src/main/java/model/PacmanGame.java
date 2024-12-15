@@ -206,6 +206,7 @@ public class PacmanGame implements Game {
             hero.attack(monstreProche);}// Attaquer le monstre
             
 		}
+		verifierCase();
 		for (Monster monstre : monstres) {
 	        monstre.mettreAJourMonstre(hero.getX(), hero.getY(), labyrinthe);}
 		//for (Monster monstre : monstres) {
@@ -215,9 +216,11 @@ public class PacmanGame implements Game {
 		// for (Fantome fantome : Fantome) {
 	            // Logique de mouvement des fantômes
 	            // Vous pouvez ici gérer leur déplacement, par exemple en les faisant se déplacer vers le héros
+		verifierCase();
 		for (Fantome fantome : fantomes) {
 		    fantome.mettreAJourMonstre(hero.getX(), hero.getY(), labyrinthe, hero,niveau);
 		}
+		verifierCase();
 	    
 	}
 	public Monster detecterMonstre() {

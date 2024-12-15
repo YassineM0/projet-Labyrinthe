@@ -76,8 +76,8 @@ public class Position {
     {
         if(this.x == p.getX1() && this.y == p.getY1())
         {
-            this.x = p.getX1();
-			this.y = p.getY1();
+            this.x = p.getX2();
+			this.y = p.getY2();
         }
 		else if(this.x == p.getX2() && this.y == p.getY2())
 		{

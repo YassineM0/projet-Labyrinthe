@@ -50,7 +50,7 @@ public class Hero extends Personnage {
                 return Cmd.DOWN;
             case "d":
                 return Cmd.RIGHT;
-            case "a":  // Touche pour attaquer
+            case "a":  // Touche pour attaquer 
                 return Cmd.ATTACK;
             default:
             
