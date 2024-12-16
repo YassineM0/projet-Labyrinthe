@@ -16,7 +16,7 @@ import model.casesSpeciales.Tresor;
  * 
  */
 public class PacmanGame implements Game {
-	private boolean gameOver = false;
+	private boolean gameOver = true;
 	private Hero hero;
 	private int[][] labyrinthe;
 	ArrayList<Tresor> tresors;
@@ -119,6 +119,7 @@ public class PacmanGame implements Game {
 			
 			if (hero.getX() == tresor.getX() && hero.getY() == tresor.getY()) {
 				this.finished = true;
+				this.gameOver = false;
 				System.out.println("Treasure collected! Game finished: " + this.isFinished()); // Confirm game state
 				break; // Exit loop after collecting
 			}
@@ -165,6 +166,9 @@ public class PacmanGame implements Game {
         this.finished = finished;
     }
 
+	public void setGameOver(boolean gameOver){
+		this.gameOver = gameOver;
+	}
 	
 	public Monster trouverMonstreProche() {
         // Simplification : on suppose que le monstre le plus proche est le premier de la liste
@@ -245,6 +249,11 @@ public class PacmanGame implements Game {
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
 		return finished;
+	}
+
+	public boolean isGameOver() {
+		// le jeu n'est jamais fini
+		return gameOver;
 	}
 
 }

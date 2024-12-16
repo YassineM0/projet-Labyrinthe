@@ -120,10 +120,19 @@ public class PacmanPainter implements GamePainter {
 	    }
 		drawHeroHealth(crayon);
 
-		if (game.isFinished()) {
+		if (game.isFinished()&&game.isGameOver()) {
 			crayon.setFont(new Font("Arial", Font.BOLD, 50));
 			crayon.setColor(Color.RED);
 			String message = "Game Over";
+			int x = (WIDTH - crayon.getFontMetrics().stringWidth(message)) / 2;
+			int y = HEIGHT / 2;
+			crayon.drawString(message, x, y);
+		}
+
+		else if (game.isFinished()&&!game.isGameOver()) {
+			crayon.setFont(new Font("Arial", Font.BOLD, 50));
+			crayon.setColor(Color.RED);
+			String message = "Victory";
 			int x = (WIDTH - crayon.getFontMetrics().stringWidth(message)) / 2;
 			int y = HEIGHT / 2;
 			crayon.drawString(message, x, y);
