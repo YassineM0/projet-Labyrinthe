@@ -5,12 +5,12 @@ import engine.Cmd;
 public class Personnage extends Position {
 
 
-	private static int vie;
+	protected int vie;
 	private int attaque;
 
 	public Personnage (int x,int y, int vie,int attaque) {
 		super(x, y);
-		this.vie=vie;
+		this.vie = vie;
 		this.attaque=attaque;
 	}
 
@@ -85,13 +85,13 @@ public class Personnage extends Position {
         return new int[]{getX(), getY()};
     }
 
-	public static int getVie() {
+	public int getVie() {
 		return vie;
 	}
-
-	public void setVie(int vie) {
-		this.vie = vie;
-	}
+	public void setVie(int vie)
+    {
+        this.vie = vie;
+    }
 
 	public int getAttaque() {
 		return attaque;
@@ -104,4 +104,5 @@ public class Personnage extends Position {
 	public boolean estMort() {
         return this.vie <= 0;
     }
+	
 }

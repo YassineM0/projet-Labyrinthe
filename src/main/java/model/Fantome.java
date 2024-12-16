@@ -1,7 +1,8 @@
 package model;
 
-import engine.Cmd;
 import java.util.Random;
+
+import engine.Cmd;
 
 public class Fantome extends Personnage {
 	private String name;

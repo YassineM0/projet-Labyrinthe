@@ -7,28 +7,18 @@ import engine.Cmd;
 public class Hero extends Personnage {
 
     private boolean isMagicActive;
-    private int health;
 
     public Hero(int x,int y, int vie, int attaque, boolean isMagicActive) {
         super(x, y, vie, attaque);
         this.isMagicActive = false;
-        this.health = 100;
     }
     
     public void activateMagic() {
-        isMagicActive = true;
+        this.setVie(this.getVie() + 10);
     }
-
-    public int getHealth() {
-        return health;
-    }
-
     
     
 
-    public void takeDamage(int damage) {
-        this.health = Math.max(0, this.health - damage);
-    }
 
     public boolean getIsMagicActive()
     {
@@ -78,7 +68,7 @@ public class Hero extends Personnage {
     public void attack(Monster monstre) {
         if (monstre != null) {
             int damage = getAttaque();  // Utilise getAttaque() hérité de Personnage
-            monstre.setVie(monstre.getVie() - damage);  // Réduire la vie du monstre
+            monstre.setVie(monstre.getVie() - 5);  // Réduire la vie du monstre
             System.out.println("Vous avez infligé " + damage + " points de dégâts à " + monstre.getName());
 
             // Si le monstre est mort (vie <= 0)
@@ -108,22 +98,24 @@ public class Hero extends Personnage {
         return null;
     }
 
-    public void executeAttack(Monster monstres) {
-        Monster monster = detectMonsterAround(monstres);
-        if (monster != null) {
-            attack(monster);
-            Monster.getVie();
-            System.out.println("Vous avez infligé" + Monster.getVie()+"de dégat au monstre");
-        } else {
-            System.out.println("Aucun monstre à attaquer !");
-        }
-    }
+    // public void executeAttack(Monster monstres) {
+    //     Monster monster = detectMonsterAround(monstres);
+    //     if (monster != null) {
+    //         attack(monster);
+    //         Monster.getVie();
+    //         System.out.println("Vous avez infligé" + Monster.getVie()+"de dégat au monstre");
+    //     } else {
+    //         System.out.println("Aucun monstre à attaquer !");
+    //     }
+    // }
 
-    public void regagnerVie(int montant) {
-        // Ajouter la régénération de vie avec une limite maximale de vie
-        this.health = Math.min(100, this.health + 50);  // Assurez-vous que la vie ne dépasse pas 100
-        System.out.println("Le héros a régénéré " + 50 + " points de vie. Vie actuelle : " + this.health);
-    }
+    // public void regagnerVie(int montant) {
+    //     // Ajouter la régénération de vie avec une limite maximale de vie
+    //     this.vie = Math.min(100, this.vie + 50);  // Assurez-vous que la vie ne dépasse pas 100
+    //     System.out.println("Le héros a régénéré " + 50 + " points de vie. Vie actuelle : " + this.vie);
+    // }
+
+
     
     
 }

@@ -1,16 +1,16 @@
  package project1;
 
-import static org.junit.jupiter.api.Assertions.*;
-import model.Position;
-import model.Personnage;
-import engine.Cmd;
-import model.PacmanGame;
-import model.casesSpeciales.Passage;
-import model.casesSpeciales.*;
-import model.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.*;
+
+import engine.Cmd;
+import model.Hero;
+import model.PacmanGame;
+import model.Personnage;
 
 
 
@@ -21,7 +21,7 @@ class test_2 {
     @BeforeEach
     public void setUp() {
         // Initialisation du personnage avant chaque test
-        personnage = new Personnage(1, 1, 10, 5);
+        personnage = new Personnage(1,100, 10, 5);
 
         // Création d'un labyrinthe (0 = vide, 1 = mur, 2 = obstacle bloquant)
         labyrinthe = new int[][]{
@@ -74,16 +74,7 @@ class test_2 {
         // Vérifie qu'il y a au moins un trésor
         assertTrue(game.getTresors().size() > 0, "Le jeu doit contenir au moins un trésor");
     }
-    @Test
-    public void testTakeDamage() {
-        Hero hero = new Hero(1, 1, 100, 20, false);  // Initialisation du héros avec 100 de vie
 
-        hero.takeDamage(30);  // Le héros prend 30 points de dégâts
-        assertEquals(70, hero.getHealth(), "La santé du héros doit être réduite à 70");
-
-        hero.takeDamage(100);  // Le héros prend 100 points de dégâts
-        assertEquals(0, hero.getHealth(), "La santé du héros ne doit pas être inférieure à 0");
-    }
     @Test
     public void testActivateMagic() {
         Hero hero = new Hero(1, 1, 100, 20, false);  // Initialisation du héros sans magie activée

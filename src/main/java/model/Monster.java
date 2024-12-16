@@ -1,10 +1,7 @@
 package model;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+
 import engine.Cmd;
-import java.util.Collections;
 
 public class Monster extends Personnage {
 	private String name;
@@ -13,9 +10,8 @@ public class Monster extends Personnage {
 
     private int monsterSpeed = 2; // Le monstre se d�place de 2 cases au lieu de 1 (vitesse r�duite)
     private int moveCounter = 0;  // Compteur pour r�guler la fr�quence de d�placement du monstre
-
 	    public Monster(int x,int y, int vie, int attaque,String name) {
-	    	super( x, y,  vie,  attaque);
+	    	super( x, y, vie,  attaque);
 	        this.name = name;
 	        
 	    }
@@ -126,22 +122,7 @@ public class Monster extends Personnage {
 	        return Cmd.IDLE; // Si le h�ros est hors du p�rim�tre, le monstre ne se d�place pas
 	    }
 	    
-	    public void MonstreattaqueHero(Hero hero) {
-	        int distanceX = Math.abs(hero.getX() - getX());
-	        int distanceY = Math.abs(hero.getY() - getY());
 
-	        // Si le héros est adjacent ou sur la même case
-	        if ((distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1) || (distanceX == 0 && distanceY == 0)) {
-	            if (hero.getVie() > 0) { // Vérifier si le héros est toujours en vie
-	                hero.takeDamage(getAttaque());
-	                System.out.println("Fantôme " + getName() + " attaque le héros ! Vie restante du héros : " + hero.getVie());
-
-	                if (hero.getVie() <= 0) {
-	                    System.out.println("Le héros est mort !");
-	                }
-	            }
-	        }
-	    }
 	    
 	    public void disparaître() {
 	        System.out.println(getName() + " a disparu !");
@@ -159,7 +140,6 @@ public class Monster extends Personnage {
 	            deplacementAleatoire(labyrinthe);
 	        }
 	        // Vérifier si le héros est adjacent et attaquer
-	        MonstreattaqueHero(hero);
 	    }
 	
 

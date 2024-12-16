@@ -101,6 +101,9 @@ public class PacmanPainter implements GamePainter {
 							case 5:
 							crayon.drawImage(trouImg, j * 50, i * 50, 50, 50, null);
 							break;
+							case 6:
+							crayon.drawImage(trouImg, j * 50, i * 50, 50, 50, null);
+							break;
 							
                             default:
 							crayon.drawImage(murImg, j * 50, i * 50, 50, 50, null);
@@ -113,10 +116,12 @@ public class PacmanPainter implements GamePainter {
 		drawHero(crayon);
 		for (Monster monstre : game.getMonstres()) {
 	        drawMonster(crayon, monstre);
+			drawMonsterHealth(crayon, monstre);
 	    }
 		
 		for (Fantome fantome : game.getFantomes()) {
 	        drawFantome(crayon, fantome);
+			drawFantomeHealth(crayon, fantome);
 	    }
 		drawHeroHealth(crayon);
 
@@ -138,6 +143,32 @@ public class PacmanPainter implements GamePainter {
 			crayon.drawString(message, x, y);
 		}
 		
+	}
+	private void drawMonsterHealth(Graphics2D crayon, Monster monstre) {
+		int health = monstre.getVie();
+	
+		crayon.setColor(Color.WHITE);
+		crayon.fillRect(monstre.getCoordonnees()[1] * 50 + 10, monstre.getCoordonnees()[0] * 50 - 10, 50, 10);
+	
+		crayon.setColor(Color.CYAN);
+		crayon.fillRect(monstre.getCoordonnees()[1] * 50 + 10, monstre.getCoordonnees()[0] * 50 - 10, 
+						(int) (50 * (health / 100.0)), 10);
+	
+		crayon.setColor(Color.BLACK);
+		crayon.drawString("Health: " + health, monstre.getCoordonnees()[1] * 50 + 10, monstre.getCoordonnees()[0] * 50 - 15);
+	}
+	private void drawFantomeHealth(Graphics2D crayon, Fantome fantome) {
+			int health = fantome.getVie();
+		
+			crayon.setColor(Color.WHITE);
+			crayon.fillRect(fantome.getCoordonnees()[1] * 50 + 10, fantome.getCoordonnees()[0] * 50 - 10, 50, 10);
+		
+			crayon.setColor(Color.BLACK);
+			crayon.fillRect(fantome.getCoordonnees()[1] * 50 + 10, fantome.getCoordonnees()[0] * 50 - 10, 
+							(int) (50 * (health / 100.0)), 10);
+		
+			crayon.setColor(Color.BLACK);
+			crayon.drawString("Health: " + health, fantome.getCoordonnees()[1] * 50 + 10, fantome.getCoordonnees()[0] * 50 - 15);
 	}
 	private void drawHeroHealth(Graphics2D crayon) {
 		Hero hero = game.getHero();
