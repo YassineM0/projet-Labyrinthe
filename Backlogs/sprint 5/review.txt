@@ -1,0 +1,12 @@
+Lors du dernier sprint, toutes les tâches du backlog ont été complétées :
+
+Points de vie : Ajout du système de points de vie pour le héros et les ennemis.
+Mécanisme d'attaque : Implémentation des interactions dynamiques entre le héros et les ennemis.
+Case magique : Modification du comportement pour offrir des avantages au héros.
+Fantômes : Amélioration du comportement des fantômes avec des mouvements stratégiques et un mécanisme d'attaque.
+Interface utilisateur : Création des écrans de victoire et de défaite.
+Affichage du labyrinthe : Optimisation pour centrer le personnage.
+Niveaux de jeu : Ajout de niveaux avec difficulté croissante.
+Documentation : Création du diagramme UML des classes.
+Tests : Implémentation de tests unitaires JUnit.
+Toutes les tâches ont été réalisées avec succès et dans les délais.
