@@ -112,6 +112,21 @@ public class Monster extends Personnage {
 	            deplacementAleatoire(labyrinthe);
 	        }
 	    }
+	    public void attaquerHero(Hero hero) {
+	        int distanceX = Math.abs(hero.getX() - getX());
+	        int distanceY = Math.abs(hero.getY() - getY());
+
+	        // Vérifier si le héros est adjacent au fantôme
+	        if ((distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1)) {
+	            hero.setVie(hero.getVie() - getAttaque()); // Réduit les points de vie du héros
+	            System.out.println("Fantôme " + name + " attaque le héros ! Vie restante du héros : " + hero.getVie());
+
+	            // Vérifier si le héros est mort
+	            if (hero.getVie() <= 0) {
+	                System.out.println("Le héros est mort !");
+	            }
+	        }
+	    }
 
 
 
