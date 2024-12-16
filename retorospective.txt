@@ -1,0 +1,18 @@
+Rétrospective du projet labyrinthe
+
+Ce qui a bien fonctionné :
+
+Collaboration efficace : L'équipe a bien collaboré et a respecté les délais pour chaque tâche. Chaque membre a su remplir son rôle et apporter une contribution significative, ce qui a permis d'avancer rapidement.
+Mécaniques de jeu : L'implémentation des points de vie, du mécanisme d'attaque, des fantômes et de la case magique a été fluide. Ces fonctionnalités clés ont bien enrichi l'expérience de jeu.
+Tests et Documentation : Les tests unitaires JUnit ont permis d'assurer la stabilité du jeu, et le diagramme UML a facilité la compréhension de l'architecture du projet.
+Interface utilisateur : Les écrans de victoire et de défaite ajoutent une dimension importante au gameplay et à l'expérience du joueur.
+Ce qui pourrait être amélioré :
+
+Affichage du labyrinthe : Bien que l'affichage ait été amélioré, il reste encore quelques ajustements à faire pour un affichage plus fluide et centré sur le personnage. Un problème de dimension des cases avait retardé certaines tâches liées à l'affichage.
+Mécanismes complexes : L'intégration des mécanismes d'attaque et du comportement stratégique des fantômes a été plus complexe que prévu, ce qui a entraîné des retards dans certaines fonctionnalités.
+Niveaux et progression : L'ajout des niveaux de jeu a pris plus de temps que prévu en raison de la difficulté croissante et de l'équilibrage des obstacles.
+Leçons apprises :
+
+Planification : Une meilleure estimation des tâches aurait permis de mieux gérer le temps, notamment pour les mécanismes plus complexes.
+Tests en amont : Il aurait été utile de commencer les tests plus tôt dans le processus de développement pour éviter des problèmes inattendus en fin de sprint.
+Communication : Une communication régulière sur les progrès et les obstacles a permis de résoudre rapidement les problèmes et d'ajuster les priorités.
