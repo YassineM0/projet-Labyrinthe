@@ -44,20 +44,27 @@ public class PacmanController implements GameController {
 		switch (e.getKeyChar()) {
 			case 'd':  
 			case 'D':
+			case KeyEvent.VK_RIGHT:
 				this.commandeEnCours = Cmd.UP;
 				break;
 			case 'q':  
 			case 'Q':
+			case KeyEvent.VK_LEFT:
 				this.commandeEnCours = Cmd.DOWN;
 				break;
 			case 'z':  
 			case 'Z':
+			case KeyEvent.VK_UP :
 				this.commandeEnCours = Cmd.LEFT;
 				break;
 			case 's':  
 			case 'S':
+			case KeyEvent.VK_DOWN :
 				this.commandeEnCours = Cmd.RIGHT;
 				break;
+			case 'a':
+			case 'A':
+				this.commandeEnCours = Cmd.ATTACK;
 			default:
 				this.commandeEnCours = Cmd.IDLE;
 				break;

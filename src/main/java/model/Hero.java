@@ -98,7 +98,32 @@ public class Hero extends Personnage {
     public void setMagicActive(boolean isMagicActive) {
         this.isMagicActive = isMagicActive;
     }
+    public Monster detectMonsterAround(Monster monstre) {
 
+    	int distanceX = Math.abs(monstre.getX() - getX());
+    	int distanceY = Math.abs(monstre.getY() - getY());
+    	if ((distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1)) {
+                return monstre;
+            }
+        return null;
+    }
+
+    public void executeAttack(Monster monstres) {
+        Monster monster = detectMonsterAround(monstres);
+        if (monster != null) {
+            attack(monster);
+            Monster.getVie();
+            System.out.println("Vous avez infligé" + Monster.getVie()+"de dégat au monstre");
+        } else {
+            System.out.println("Aucun monstre à attaquer !");
+        }
+    }
+
+    public void regagnerVie(int montant) {
+        // Ajouter la régénération de vie avec une limite maximale de vie
+        this.health = Math.min(100, this.health + 50);  // Assurez-vous que la vie ne dépasse pas 100
+        System.out.println("Le héros a régénéré " + 50 + " points de vie. Vie actuelle : " + this.health);
+    }
     
     
 }

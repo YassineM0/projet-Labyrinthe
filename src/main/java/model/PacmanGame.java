@@ -21,7 +21,7 @@ public class PacmanGame implements Game {
 	private int[][] labyrinthe;
 	ArrayList<Tresor> tresors;
 	ArrayList<Passage> passages;
-	private ArrayList<Monster> monstres;
+	private static ArrayList<Monster> monstres;
 	private ArrayList<Fantome> fantomes;
 	private boolean finished;
 	Passage p = new Passage();
@@ -178,7 +178,7 @@ public class PacmanGame implements Game {
         return hero;  // Renvoie l'instance du héros
     }
 	
-	public ArrayList<Monster> getMonstres() {
+	public static ArrayList<Monster> getMonstres() {
 	    return monstres;
 	}
 	
@@ -212,7 +212,7 @@ public class PacmanGame implements Game {
 		}
 		verifierCase();
 		for (Monster monstre : monstres) {
-	        monstre.mettreAJourMonstre(hero.getX(), hero.getY(), labyrinthe);}
+	        monstre.mettreAJourMonstre(hero.getX(), hero.getY(), hero, labyrinthe);}
 		//for (Monster monstre : monstres) {
 //	        Cmd moveCmd = monstre.deplacerVersHero(hero.getX(), hero.getY(), labyrinthe);
 	//        monstre.move(moveCmd, labyrinthe);
@@ -222,7 +222,7 @@ public class PacmanGame implements Game {
 	            // Vous pouvez ici gérer leur déplacement, par exemple en les faisant se déplacer vers le héros
 		verifierCase();
 		for (Fantome fantome : fantomes) {
-		    fantome.mettreAJourMonstre(hero.getX(), hero.getY(), labyrinthe, hero,niveau);
+		    fantome.mettreAJourMonstre(hero.getX(), hero.getY(), hero, labyrinthe);
 		}
 		verifierCase();
 	    

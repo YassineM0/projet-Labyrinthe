@@ -5,7 +5,7 @@ import engine.Cmd;
 public class Personnage extends Position {
 
 
-	private int vie;
+	private static int vie;
 	private int attaque;
 
 	public Personnage (int x,int y, int vie,int attaque) {
@@ -85,7 +85,7 @@ public class Personnage extends Position {
         return new int[]{getX(), getY()};
     }
 
-	public int getVie() {
+	public static int getVie() {
 		return vie;
 	}
 
