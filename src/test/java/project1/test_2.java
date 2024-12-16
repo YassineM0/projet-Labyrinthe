@@ -61,7 +61,7 @@ class test_2 {
     }
     @Test
     public void testInitialization() {
-        PacmanGame game = new PacmanGame(1, 1, 3, 2);
+        PacmanGame game = new PacmanGame(1, 1, 3, 2,1);
         
         // Vérifie que le héros est initialisé à la position (1, 1)
         assertEquals(1, game.getHero().getX(), "Le héros doit être initialisé à la position X=1");

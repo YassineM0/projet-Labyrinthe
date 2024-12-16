@@ -95,7 +95,7 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
-	public PacmanGame(int x, int y, int vie, int attaque) {
+	public PacmanGame(int x, int y, int vie, int attaque, int niveau) {
 		this.finished = false;
 		this.hero = new Hero(x, y, vie, attaque, false);
 		this.tresors = new ArrayList<>();
